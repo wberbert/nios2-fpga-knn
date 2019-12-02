@@ -1,0 +1,40 @@
+	nios2_sopc u0 (
+		.clk50_0_clk                          (<connected-to-clk50_0_clk>),                          //                       clk50_0.clk
+		.knn_classe_prevista_in_export        (<connected-to-knn_classe_prevista_in_export>),        //        knn_classe_prevista_in.export
+		.knn_classe_prevista_pronto_in_export (<connected-to-knn_classe_prevista_pronto_in_export>), // knn_classe_prevista_pronto_in.export
+		.knn_dados_atributo_out_export        (<connected-to-knn_dados_atributo_out_export>),        //        knn_dados_atributo_out.export
+		.knn_dados_pronto_out_export          (<connected-to-knn_dados_pronto_out_export>),          //          knn_dados_pronto_out.export
+		.knn_dados_valor_out_export           (<connected-to-knn_dados_valor_out_export>),           //           knn_dados_valor_out.export
+		.knn_reset_io_export                  (<connected-to-knn_reset_io_export>),                  //                  knn_reset_io.export
+		.knn_treinamento_out_export           (<connected-to-knn_treinamento_out_export>),           //           knn_treinamento_out.export
+		.pio_0_external_connection_export     (<connected-to-pio_0_external_connection_export>),     //     pio_0_external_connection.export
+		.reset_clk50_0_reset_n                (<connected-to-reset_clk50_0_reset_n>),                //                 reset_clk50_0.reset_n
+		.rs232_0_external_interface_RXD       (<connected-to-rs232_0_external_interface_RXD>),       //    rs232_0_external_interface.RXD
+		.rs232_0_external_interface_TXD       (<connected-to-rs232_0_external_interface_TXD>),       //                              .TXD
+		.sdram_0_wire_addr                    (<connected-to-sdram_0_wire_addr>),                    //                  sdram_0_wire.addr
+		.sdram_0_wire_ba                      (<connected-to-sdram_0_wire_ba>),                      //                              .ba
+		.sdram_0_wire_cas_n                   (<connected-to-sdram_0_wire_cas_n>),                   //                              .cas_n
+		.sdram_0_wire_cke                     (<connected-to-sdram_0_wire_cke>),                     //                              .cke
+		.sdram_0_wire_cs_n                    (<connected-to-sdram_0_wire_cs_n>),                    //                              .cs_n
+		.sdram_0_wire_dq                      (<connected-to-sdram_0_wire_dq>),                      //                              .dq
+		.sdram_0_wire_dqm                     (<connected-to-sdram_0_wire_dqm>),                     //                              .dqm
+		.sdram_0_wire_ras_n                   (<connected-to-sdram_0_wire_ras_n>),                   //                              .ras_n
+		.sdram_0_wire_we_n                    (<connected-to-sdram_0_wire_we_n>),                    //                              .we_n
+		.usb_0_external_interface_INT1        (<connected-to-usb_0_external_interface_INT1>),        //      usb_0_external_interface.INT1
+		.usb_0_external_interface_DATA        (<connected-to-usb_0_external_interface_DATA>),        //                              .DATA
+		.usb_0_external_interface_RST_N       (<connected-to-usb_0_external_interface_RST_N>),       //                              .RST_N
+		.usb_0_external_interface_ADDR        (<connected-to-usb_0_external_interface_ADDR>),        //                              .ADDR
+		.usb_0_external_interface_CS_N        (<connected-to-usb_0_external_interface_CS_N>),        //                              .CS_N
+		.usb_0_external_interface_RD_N        (<connected-to-usb_0_external_interface_RD_N>),        //                              .RD_N
+		.usb_0_external_interface_WR_N        (<connected-to-usb_0_external_interface_WR_N>),        //                              .WR_N
+		.usb_0_external_interface_INT0        (<connected-to-usb_0_external_interface_INT0>),        //                              .INT0
+		.vga_0_external_interface_CLK         (<connected-to-vga_0_external_interface_CLK>),         //      vga_0_external_interface.CLK
+		.vga_0_external_interface_HS          (<connected-to-vga_0_external_interface_HS>),          //                              .HS
+		.vga_0_external_interface_VS          (<connected-to-vga_0_external_interface_VS>),          //                              .VS
+		.vga_0_external_interface_BLANK       (<connected-to-vga_0_external_interface_BLANK>),       //                              .BLANK
+		.vga_0_external_interface_SYNC        (<connected-to-vga_0_external_interface_SYNC>),        //                              .SYNC
+		.vga_0_external_interface_R           (<connected-to-vga_0_external_interface_R>),           //                              .R
+		.vga_0_external_interface_G           (<connected-to-vga_0_external_interface_G>),           //                              .G
+		.vga_0_external_interface_B           (<connected-to-vga_0_external_interface_B>)            //                              .B
+	);
+

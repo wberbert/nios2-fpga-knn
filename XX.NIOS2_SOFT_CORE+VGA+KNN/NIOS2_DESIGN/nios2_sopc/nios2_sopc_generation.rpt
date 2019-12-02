@@ -1,0 +1,271 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc.qsys --block-symbol-file --output-directory=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading NIOS2_DESIGN/nios2_sopc.qsys
+Progress: Reading input file
+Progress: Adding CLK50_0 [clock_source 18.1]
+Progress: Parameterizing module CLK50_0
+Progress: Adding JTAG_0 [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module JTAG_0
+Progress: Adding MMU_0 [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module MMU_0
+Progress: Adding NIOS2_0 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module NIOS2_0
+Progress: Adding PIO_0 [altera_avalon_pio 18.1]
+Progress: Parameterizing module PIO_0
+Progress: Adding PIO_KNN_RESET [altera_avalon_pio 18.1]
+Progress: Parameterizing module PIO_KNN_RESET
+Progress: Adding PI_KNN_CLASSE_PREVISTA [altera_avalon_pio 18.1]
+Progress: Parameterizing module PI_KNN_CLASSE_PREVISTA
+Progress: Adding PI_KNN_CLASSE_PREVISTA_PRONTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PI_KNN_CLASSE_PREVISTA_PRONTO
+Progress: Adding PO_KNN_DADOS [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS
+Progress: Adding PO_KNN_DADOS_ATRIBUTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS_ATRIBUTO
+Progress: Adding PO_KNN_DADOS_PRONTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS_PRONTO
+Progress: Adding PO_KNN_TREINAMENTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_TREINAMENTO
+Progress: Adding RS232_0 [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module RS232_0
+Progress: Adding SDRAM_0 [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module SDRAM_0
+Progress: Adding TIMER_0 [altera_avalon_timer 18.1]
+Progress: Parameterizing module TIMER_0
+Progress: Adding TIMER_1 [altera_avalon_timer 18.1]
+Progress: Parameterizing module TIMER_1
+Progress: Adding USB_0 [altera_up_avalon_usb 18.0]
+Progress: Parameterizing module USB_0
+Progress: Adding VGA_0 [altera_up_avalon_video_vga_controller 18.0]
+Progress: Parameterizing module VGA_0
+Progress: Adding VGA_BUFFER_0 [altera_up_avalon_video_character_buffer_with_dma 18.0]
+Progress: Parameterizing module VGA_BUFFER_0
+Progress: Adding VGA_PLL_0 [altpll 18.1]
+Progress: Parameterizing module VGA_PLL_0
+Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_buffer 18.0]
+Progress: Parameterizing module video_dual_clock_buffer_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nios2_sopc.JTAG_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: nios2_sopc.PIO_KNN_RESET: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.PI_KNN_CLASSE_PREVISTA: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.PI_KNN_CLASSE_PREVISTA_PRONTO: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.SDRAM_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: nios2_sopc.VGA_0: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: nios2_sopc.VGA_BUFFER_0: Character Resolution: 80 x 60
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc.qsys --synthesis=VERILOG --output-directory=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading NIOS2_DESIGN/nios2_sopc.qsys
+Progress: Reading input file
+Progress: Adding CLK50_0 [clock_source 18.1]
+Progress: Parameterizing module CLK50_0
+Progress: Adding JTAG_0 [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module JTAG_0
+Progress: Adding MMU_0 [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module MMU_0
+Progress: Adding NIOS2_0 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module NIOS2_0
+Progress: Adding PIO_0 [altera_avalon_pio 18.1]
+Progress: Parameterizing module PIO_0
+Progress: Adding PIO_KNN_RESET [altera_avalon_pio 18.1]
+Progress: Parameterizing module PIO_KNN_RESET
+Progress: Adding PI_KNN_CLASSE_PREVISTA [altera_avalon_pio 18.1]
+Progress: Parameterizing module PI_KNN_CLASSE_PREVISTA
+Progress: Adding PI_KNN_CLASSE_PREVISTA_PRONTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PI_KNN_CLASSE_PREVISTA_PRONTO
+Progress: Adding PO_KNN_DADOS [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS
+Progress: Adding PO_KNN_DADOS_ATRIBUTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS_ATRIBUTO
+Progress: Adding PO_KNN_DADOS_PRONTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_DADOS_PRONTO
+Progress: Adding PO_KNN_TREINAMENTO [altera_avalon_pio 18.1]
+Progress: Parameterizing module PO_KNN_TREINAMENTO
+Progress: Adding RS232_0 [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module RS232_0
+Progress: Adding SDRAM_0 [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module SDRAM_0
+Progress: Adding TIMER_0 [altera_avalon_timer 18.1]
+Progress: Parameterizing module TIMER_0
+Progress: Adding TIMER_1 [altera_avalon_timer 18.1]
+Progress: Parameterizing module TIMER_1
+Progress: Adding USB_0 [altera_up_avalon_usb 18.0]
+Progress: Parameterizing module USB_0
+Progress: Adding VGA_0 [altera_up_avalon_video_vga_controller 18.0]
+Progress: Parameterizing module VGA_0
+Progress: Adding VGA_BUFFER_0 [altera_up_avalon_video_character_buffer_with_dma 18.0]
+Progress: Parameterizing module VGA_BUFFER_0
+Progress: Adding VGA_PLL_0 [altpll 18.1]
+Progress: Parameterizing module VGA_PLL_0
+Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_buffer 18.0]
+Progress: Parameterizing module video_dual_clock_buffer_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nios2_sopc.JTAG_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: nios2_sopc.PIO_KNN_RESET: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.PI_KNN_CLASSE_PREVISTA: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.PI_KNN_CLASSE_PREVISTA_PRONTO: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: nios2_sopc.SDRAM_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: nios2_sopc.VGA_0: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: nios2_sopc.VGA_BUFFER_0: Character Resolution: 80 x 60
+Info: nios2_sopc: Generating nios2_sopc "nios2_sopc" for QUARTUS_SYNTH
+Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src3 and cmd_mux_018.sink0
+Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+Info: Inserting clock-crossing logic between rsp_demux_018.src0 and rsp_mux_001.sink3
+Info: JTAG_0: Starting RTL generation for module 'nios2_sopc_JTAG_0'
+Info: JTAG_0:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=nios2_sopc_JTAG_0 --dir=/tmp/alt8158_1306441170804649184.dir/0002_JTAG_0_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0002_JTAG_0_gen//nios2_sopc_JTAG_0_component_configuration.pl  --do_build_sim=0  ]
+Info: JTAG_0: Done RTL generation for module 'nios2_sopc_JTAG_0'
+Info: JTAG_0: "nios2_sopc" instantiated altera_avalon_jtag_uart "JTAG_0"
+Info: MMU_0: Starting RTL generation for module 'nios2_sopc_MMU_0'
+Info: MMU_0:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=nios2_sopc_MMU_0 --dir=/tmp/alt8158_1306441170804649184.dir/0003_MMU_0_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0003_MMU_0_gen//nios2_sopc_MMU_0_component_configuration.pl  --do_build_sim=0  ]
+Info: MMU_0: Done RTL generation for module 'nios2_sopc_MMU_0'
+Info: MMU_0: "nios2_sopc" instantiated altera_avalon_onchip_memory2 "MMU_0"
+Info: NIOS2_0: "nios2_sopc" instantiated altera_nios2_gen2 "NIOS2_0"
+Info: PIO_0: Starting RTL generation for module 'nios2_sopc_PIO_0'
+Info: PIO_0:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PIO_0 --dir=/tmp/alt8158_1306441170804649184.dir/0004_PIO_0_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0004_PIO_0_gen//nios2_sopc_PIO_0_component_configuration.pl  --do_build_sim=0  ]
+Info: PIO_0: Done RTL generation for module 'nios2_sopc_PIO_0'
+Info: PIO_0: "nios2_sopc" instantiated altera_avalon_pio "PIO_0"
+Info: PIO_KNN_RESET: Starting RTL generation for module 'nios2_sopc_PIO_KNN_RESET'
+Info: PIO_KNN_RESET:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PIO_KNN_RESET --dir=/tmp/alt8158_1306441170804649184.dir/0005_PIO_KNN_RESET_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0005_PIO_KNN_RESET_gen//nios2_sopc_PIO_KNN_RESET_component_configuration.pl  --do_build_sim=0  ]
+Info: PIO_KNN_RESET: Done RTL generation for module 'nios2_sopc_PIO_KNN_RESET'
+Info: PIO_KNN_RESET: "nios2_sopc" instantiated altera_avalon_pio "PIO_KNN_RESET"
+Info: PI_KNN_CLASSE_PREVISTA: Starting RTL generation for module 'nios2_sopc_PI_KNN_CLASSE_PREVISTA'
+Info: PI_KNN_CLASSE_PREVISTA:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PI_KNN_CLASSE_PREVISTA --dir=/tmp/alt8158_1306441170804649184.dir/0006_PI_KNN_CLASSE_PREVISTA_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0006_PI_KNN_CLASSE_PREVISTA_gen//nios2_sopc_PI_KNN_CLASSE_PREVISTA_component_configuration.pl  --do_build_sim=0  ]
+Info: PI_KNN_CLASSE_PREVISTA: Done RTL generation for module 'nios2_sopc_PI_KNN_CLASSE_PREVISTA'
+Info: PI_KNN_CLASSE_PREVISTA: "nios2_sopc" instantiated altera_avalon_pio "PI_KNN_CLASSE_PREVISTA"
+Info: PI_KNN_CLASSE_PREVISTA_PRONTO: Starting RTL generation for module 'nios2_sopc_PI_KNN_CLASSE_PREVISTA_PRONTO'
+Info: PI_KNN_CLASSE_PREVISTA_PRONTO:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PI_KNN_CLASSE_PREVISTA_PRONTO --dir=/tmp/alt8158_1306441170804649184.dir/0007_PI_KNN_CLASSE_PREVISTA_PRONTO_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0007_PI_KNN_CLASSE_PREVISTA_PRONTO_gen//nios2_sopc_PI_KNN_CLASSE_PREVISTA_PRONTO_component_configuration.pl  --do_build_sim=0  ]
+Info: PI_KNN_CLASSE_PREVISTA_PRONTO: Done RTL generation for module 'nios2_sopc_PI_KNN_CLASSE_PREVISTA_PRONTO'
+Info: PI_KNN_CLASSE_PREVISTA_PRONTO: "nios2_sopc" instantiated altera_avalon_pio "PI_KNN_CLASSE_PREVISTA_PRONTO"
+Info: PO_KNN_DADOS: Starting RTL generation for module 'nios2_sopc_PO_KNN_DADOS'
+Info: PO_KNN_DADOS:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PO_KNN_DADOS --dir=/tmp/alt8158_1306441170804649184.dir/0008_PO_KNN_DADOS_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0008_PO_KNN_DADOS_gen//nios2_sopc_PO_KNN_DADOS_component_configuration.pl  --do_build_sim=0  ]
+Info: PO_KNN_DADOS: Done RTL generation for module 'nios2_sopc_PO_KNN_DADOS'
+Info: PO_KNN_DADOS: "nios2_sopc" instantiated altera_avalon_pio "PO_KNN_DADOS"
+Info: PO_KNN_DADOS_ATRIBUTO: Starting RTL generation for module 'nios2_sopc_PO_KNN_DADOS_ATRIBUTO'
+Info: PO_KNN_DADOS_ATRIBUTO:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PO_KNN_DADOS_ATRIBUTO --dir=/tmp/alt8158_1306441170804649184.dir/0009_PO_KNN_DADOS_ATRIBUTO_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0009_PO_KNN_DADOS_ATRIBUTO_gen//nios2_sopc_PO_KNN_DADOS_ATRIBUTO_component_configuration.pl  --do_build_sim=0  ]
+Info: PO_KNN_DADOS_ATRIBUTO: Done RTL generation for module 'nios2_sopc_PO_KNN_DADOS_ATRIBUTO'
+Info: PO_KNN_DADOS_ATRIBUTO: "nios2_sopc" instantiated altera_avalon_pio "PO_KNN_DADOS_ATRIBUTO"
+Info: PO_KNN_DADOS_PRONTO: Starting RTL generation for module 'nios2_sopc_PO_KNN_DADOS_PRONTO'
+Info: PO_KNN_DADOS_PRONTO:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=nios2_sopc_PO_KNN_DADOS_PRONTO --dir=/tmp/alt8158_1306441170804649184.dir/0010_PO_KNN_DADOS_PRONTO_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0010_PO_KNN_DADOS_PRONTO_gen//nios2_sopc_PO_KNN_DADOS_PRONTO_component_configuration.pl  --do_build_sim=0  ]
+Info: PO_KNN_DADOS_PRONTO: Done RTL generation for module 'nios2_sopc_PO_KNN_DADOS_PRONTO'
+Info: PO_KNN_DADOS_PRONTO: "nios2_sopc" instantiated altera_avalon_pio "PO_KNN_DADOS_PRONTO"
+Info: RS232_0: Starting Generation of RS232 UART
+Info: RS232_0: "nios2_sopc" instantiated altera_up_avalon_rs232 "RS232_0"
+Info: SDRAM_0: Starting RTL generation for module 'nios2_sopc_SDRAM_0'
+Info: SDRAM_0:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=nios2_sopc_SDRAM_0 --dir=/tmp/alt8158_1306441170804649184.dir/0012_SDRAM_0_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0012_SDRAM_0_gen//nios2_sopc_SDRAM_0_component_configuration.pl  --do_build_sim=0  ]
+Info: SDRAM_0: Done RTL generation for module 'nios2_sopc_SDRAM_0'
+Info: SDRAM_0: "nios2_sopc" instantiated altera_avalon_new_sdram_controller "SDRAM_0"
+Info: TIMER_0: Starting RTL generation for module 'nios2_sopc_TIMER_0'
+Info: TIMER_0:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64//perl/bin/perl -I /opt/intelFPGA_lite/18.1/quartus/linux64//perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=nios2_sopc_TIMER_0 --dir=/tmp/alt8158_1306441170804649184.dir/0013_TIMER_0_gen/ --quartus_dir=/opt/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt8158_1306441170804649184.dir/0013_TIMER_0_gen//nios2_sopc_TIMER_0_component_configuration.pl  --do_build_sim=0  ]
+Info: TIMER_0: Done RTL generation for module 'nios2_sopc_TIMER_0'
+Info: TIMER_0: "nios2_sopc" instantiated altera_avalon_timer "TIMER_0"
+Info: USB_0: Starting Generation of USB Controller
+Info: USB_0: "nios2_sopc" instantiated altera_up_avalon_usb "USB_0"
+Info: VGA_0: Starting Generation of VGA Controller
+Info: VGA_0: "nios2_sopc" instantiated altera_up_avalon_video_vga_controller "VGA_0"
+Info: VGA_BUFFER_0: Starting Generation of Character Buffer
+Info: VGA_BUFFER_0: "nios2_sopc" instantiated altera_up_avalon_video_character_buffer_with_dma "VGA_BUFFER_0"
+Info: VGA_PLL_0: "nios2_sopc" instantiated altpll "VGA_PLL_0"
+Info: video_dual_clock_buffer_0: Starting Generation of the Dual Clock Buffer
+Info: video_dual_clock_buffer_0: "nios2_sopc" instantiated altera_up_avalon_video_dual_clock_buffer "video_dual_clock_buffer_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_016: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_017: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_018: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_019: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "nios2_sopc" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "nios2_sopc" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "nios2_sopc" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'nios2_sopc_NIOS2_0_cpu'
+Info: cpu:   Generation command is [exec /opt/intelFPGA_lite/18.1/quartus/linux64//eperlcmd -I /opt/intelFPGA_lite/18.1/quartus/linux64//perl/lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /opt/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /opt/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /opt/intelFPGA_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=nios2_sopc_NIOS2_0_cpu --dir=/tmp/alt8158_1306441170804649184.dir/0023_cpu_gen/ --quartus_bindir=/opt/intelFPGA_lite/18.1/quartus/linux64/ --verilog --config=/tmp/alt8158_1306441170804649184.dir/0023_cpu_gen//nios2_sopc_NIOS2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2019.09.19 20:05:55 (*) Starting Nios II generation
+Info: cpu: # 2019.09.19 20:05:55 (*)   Checking for plaintext license.
+Info: cpu: # 2019.09.19 20:05:56 (*)   Couldn't query license setup in Quartus directory /opt/intelFPGA_lite/18.1/quartus/linux64/
+Info: cpu: # 2019.09.19 20:05:56 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2019.09.19 20:05:56 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2019.09.19 20:05:56 (*)   Plaintext license not found.
+Info: cpu: # 2019.09.19 20:05:56 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2019.09.19 20:05:57 (*)   Couldn't query license setup in Quartus directory /opt/intelFPGA_lite/18.1/quartus/linux64/
+Info: cpu: # 2019.09.19 20:05:57 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2019.09.19 20:05:57 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2019.09.19 20:05:57 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: cpu: # 2019.09.19 20:05:57 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2019.09.19 20:05:57 (*)   Creating all objects for CPU
+Info: cpu: # 2019.09.19 20:05:57 (*)     Testbench
+Info: cpu: # 2019.09.19 20:05:57 (*)     Instruction decoding
+Info: cpu: # 2019.09.19 20:05:57 (*)       Instruction fields
+Info: cpu: # 2019.09.19 20:05:57 (*)       Instruction decodes
+Info: cpu: # 2019.09.19 20:05:57 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2019.09.19 20:05:58 (*)       Instruction controls
+Info: cpu: # 2019.09.19 20:05:58 (*)     Pipeline frontend
+Info: cpu: # 2019.09.19 20:05:58 (*)       Micro-ITLB
+Info: cpu: # 2019.09.19 20:05:58 (*)     Pipeline backend
+Info: cpu: # 2019.09.19 20:05:59 (*)       Micro-DTLB
+Info: cpu: # 2019.09.19 20:05:59 (*)     TLB
+Info: cpu: # 2019.09.19 20:06:01 (*)   Generating RTL from CPU objects
+Info: cpu: # 2019.09.19 20:06:03 (*)   Creating encrypted RTL
+Info: cpu: # 2019.09.19 20:06:04 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'nios2_sopc_NIOS2_0_cpu'
+Info: cpu: "NIOS2_0" instantiated altera_nios2_gen2_unit "cpu"
+Info: NIOS2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "NIOS2_0_data_master_translator"
+Info: VGA_BUFFER_0_avalon_char_buffer_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "VGA_BUFFER_0_avalon_char_buffer_slave_translator"
+Info: NIOS2_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "NIOS2_0_data_master_agent"
+Info: VGA_BUFFER_0_avalon_char_buffer_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "VGA_BUFFER_0_avalon_char_buffer_slave_agent"
+Info: VGA_BUFFER_0_avalon_char_buffer_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "VGA_BUFFER_0_avalon_char_buffer_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info: router_020: "mm_interconnect_0" instantiated altera_merlin_router "router_020"
+Info: NIOS2_0_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "NIOS2_0_data_master_limiter"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: VGA_BUFFER_0_avalon_char_buffer_slave_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "VGA_BUFFER_0_avalon_char_buffer_slave_burst_adapter"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_003"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_001"
+Info: rsp_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_003"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: VGA_BUFFER_0_avalon_char_buffer_slave_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "VGA_BUFFER_0_avalon_char_buffer_slave_rsp_width_adapter"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: Reusing file /home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avalon_st_adapter_001: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_001"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: error_adapter_0: "avalon_st_adapter_001" instantiated error_adapter "error_adapter_0"
+Info: nios2_sopc: Done "nios2_sopc" with 51 modules, 91 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

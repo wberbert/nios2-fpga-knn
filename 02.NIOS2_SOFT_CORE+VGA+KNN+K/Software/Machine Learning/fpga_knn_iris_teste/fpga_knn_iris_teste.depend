@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1571096510 source:/home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/Machine Learning/fpga_knn_iris_teste/source/mapmem.c
+	"../include/mapmem.h"
+
+1571096513 /home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/Machine Learning/fpga_knn_iris_teste/include/mapmem.h
+	<sys/mman.h>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<assert.h>
+
+1574895068 source:/home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/01.Machine Learning/fpga_knn_iris_teste/main.c
+	"main.h"
+
+1571096447 /home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/01.Machine Learning/fpga_knn_iris_teste/main.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<stdbool.h>
+	"include/mapmem.h"
+
+1571096513 /home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/01.Machine Learning/fpga_knn_iris_teste/include/mapmem.h
+	<sys/mman.h>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<assert.h>
+
+1571096510 source:/home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/CodeBlocks/01.Machine Learning/fpga_knn_iris_teste/source/mapmem.c
+	"../include/mapmem.h"
+

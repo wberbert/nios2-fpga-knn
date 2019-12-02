@@ -1,0 +1,16 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst memory.subsystemA_0.onchip_memory2_0 -pg 1
+preplace inst memory.onchip_memory2_0 -pg 1 -lvl 1 -y 280
+preplace inst memory.nios2_gen2_0.clock_bridge -pg 1
+preplace inst memory.nios2_gen2_0 -pg 1 -lvl 1 -y 50
+preplace inst memory.clk_0 -pg 1 -lvl 1 -y 210
+preplace inst memory -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst memory.nios2_gen2_0.reset_bridge -pg 1
+preplace inst memory.subsystemA_0 -pg 1 -lvl 1 -y 410
+preplace inst memory.nios2_gen2_0.cpu -pg 1
+preplace netloc FAN_IN<net_container>memory</net_container>(MASTER)nios2_gen2_0.instruction_master,(SLAVE)nios2_gen2_0.debug_mem_slave,(MASTER)nios2_gen2_0.data_master) 1 0 2 80 200 470
+preplace netloc EXPORT<net_container>memory</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)memory.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>memory</net_container>(SLAVE)memory.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+levelinfo -pg 1 0 50 510
+levelinfo -hier memory 60 220 490

@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/software/fpga_knn
+newSoftwareExampleWizardPage.sopcinfoFile=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/nios2_sopc.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/software/fpga_knn_bsp
+softwareExampleBspWizardPage.defaultLocation=/home/wberbert/Documentos/mestrado/Quartus/NIOS2/Hardware/04-NIOS2_SOFT_CORE+VGA+KNN/NIOS2_DESIGN/software/Altera_HAL
