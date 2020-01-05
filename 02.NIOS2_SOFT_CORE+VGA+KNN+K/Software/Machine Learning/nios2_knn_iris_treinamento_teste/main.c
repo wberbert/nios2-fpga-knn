@@ -189,9 +189,18 @@ struct timeval g_start, g_stop;
 double g_delta_ms, g_delta_ms_total;
 
 int  g_int_total_registros_corretos = 0;
+bool bln_debug = false;
 
 int main(int argc, char *argv[])
 {
+    int int_P;
+
+    for (int_P=1; int_P < argc; int_P++) {
+
+        //if (argv[int_P] == "debug") bln_Debug = 1;
+        if (strcmp(argv[int_P], "debug") == 0) bln_debug = true;
+
+    }
 
     fnc_testar();
 
@@ -227,11 +236,11 @@ int fnc_testar (void) {
         if (g_int_arr_dados_teste[4] == g_int_classe_prevista) {
 
             g_int_total_registros_corretos++;
-            printf ("Classe prevista %d\t Classe real %d\t %5.7f Segundos X\n", g_int_classe_prevista, g_int_arr_dados_teste[4], (float) g_delta_ms);
+            if (bln_debug == true) printf ("Classe prevista %d\t Classe real %d\t %5.7f Segundos X\n", g_int_classe_prevista, g_int_arr_dados_teste[4], (float) g_delta_ms);
 
         } else {
 
-            printf ("Classe prevista %d\t Classe real %d\t %5.7f Segundos  \n", g_int_classe_prevista, g_int_arr_dados_teste[4], (float) g_delta_ms);
+            if (bln_debug == true) printf ("Classe prevista %d\t Classe real %d\t %5.7f Segundos  \n", g_int_classe_prevista, g_int_arr_dados_teste[4], (float) g_delta_ms);
 
         }
 
