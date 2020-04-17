@@ -48,12 +48,14 @@ int main(int argc, char *argv[])
 
 
     if (argc == 1) {
-        printf("Informe o nome do arquivo de treinamento.\n");
+        printf ("Usar %s \"nome do arquivo de teste\" \"valor de K\" <debug>", argv[0]);
+        //printf("Informe o nome do arquivo de treinamento.\n");
         return(-1);
     }
 
     if (argc == 2) {
-        printf("Informe o valor de K.\n");
+        printf ("Usar %s \"nome do arquivo de teste\" \"valor de K\" <debug>", argv[0]);
+        //printf("Informe o valor de K.\n");
         return(-1);
     }
 

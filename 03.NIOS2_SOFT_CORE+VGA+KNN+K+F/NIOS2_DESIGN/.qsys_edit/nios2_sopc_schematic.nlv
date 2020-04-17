@@ -10,15 +10,16 @@ preplace inst nios2_sopc -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst nios2_sopc.PI_KNN_CLASSE_PREVISTA -pg 1 -lvl 2 -y 230
 preplace inst nios2_sopc.NIOS2_0.cpu -pg 1
 preplace inst nios2_sopc.video_dual_clock_buffer_0 -pg 1 -lvl 4 -y 910
-preplace inst nios2_sopc.VGA_PLL_0 -pg 1 -lvl 2 -y 950
+preplace inst nios2_sopc.PI_KNN_CLASSE_PREVISTA_DISTANCIA -pg 1 -lvl 2 -y 1210
+preplace inst nios2_sopc.VGA_PLL_0 -pg 1 -lvl 2 -y 890
 preplace inst nios2_sopc.PO_KNN_DADOS -pg 1 -lvl 2 -y 630
 preplace inst nios2_sopc.JTAG_0 -pg 1 -lvl 2 -y 1310
 preplace inst nios2_sopc.VGA_BUFFER_0 -pg 1 -lvl 3 -y 890
-preplace inst nios2_sopc.RS232_0 -pg 1 -lvl 2 -y 1070
+preplace inst nios2_sopc.RS232_0 -pg 1 -lvl 2 -y 970
 preplace inst nios2_sopc.PIO_0 -pg 1 -lvl 2 -y 1810
 preplace inst nios2_sopc.NIOS2_0.reset_bridge -pg 1
 preplace inst nios2_sopc.NIOS2_0.clock_bridge -pg 1
-preplace inst nios2_sopc.USB_0 -pg 1 -lvl 2 -y 1190
+preplace inst nios2_sopc.USB_0 -pg 1 -lvl 2 -y 1090
 preplace inst nios2_sopc.TIMER_0 -pg 1 -lvl 2 -y 1410
 preplace inst nios2_sopc.PO_KNN_K -pg 1 -lvl 2 -y 30
 preplace inst nios2_sopc.MMU_0 -pg 1 -lvl 2 -y 1610
@@ -26,27 +27,27 @@ preplace inst nios2_sopc.TIMER_1 -pg 1 -lvl 2 -y 1510
 preplace inst nios2_sopc.SDRAM_0 -pg 1 -lvl 2 -y 1710
 preplace inst nios2_sopc.PO_KNN_DADOS_ATRIBUTO -pg 1 -lvl 2 -y 430
 preplace inst nios2_sopc.PI_KNN_CLASSE_PREVISTA_PRONTO -pg 1 -lvl 2 -y 530
-preplace netloc INTERCONNECT<net_container>nios2_sopc</net_container>(SLAVE)NIOS2_0.debug_mem_slave,(SLAVE)PO_KNN_DADOS_PRONTO.s1,(SLAVE)MMU_0.s1,(SLAVE)PO_KNN_K.s1,(SLAVE)PO_KNN_DADOS_ATRIBUTO.s1,(SLAVE)VGA_BUFFER_0.avalon_char_control_slave,(SLAVE)PIO_0.s1,(SLAVE)RS232_0.avalon_rs232_slave,(SLAVE)PO_KNN_RESET.s1,(SLAVE)JTAG_0.avalon_jtag_slave,(SLAVE)TIMER_0.s1,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.s1,(SLAVE)MMU_0.s2,(SLAVE)VGA_PLL_0.pll_slave,(MASTER)NIOS2_0.data_master,(SLAVE)USB_0.avalon_usb_slave,(SLAVE)PI_KNN_CLASSE_PREVISTA.s1,(SLAVE)SDRAM_0.s1,(SLAVE)PO_KNN_DADOS.s1,(SLAVE)TIMER_1.s1,(MASTER)NIOS2_0.instruction_master,(SLAVE)PO_KNN_TREINAMENTO.s1,(SLAVE)VGA_BUFFER_0.avalon_char_buffer_slave) 1 0 3 240 890 680 920 980
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.usb_0_external_interface,(SLAVE)USB_0.external_interface) 1 0 2 NJ 1240 NJ
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_DADOS_ATRIBUTO.external_connection,(SLAVE)nios2_sopc.knn_dados_atributo_out) 1 0 2 NJ 460 NJ
-preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_TREINAMENTO.clk,(SLAVE)JTAG_0.clk,(SLAVE)NIOS2_0.clk,(MASTER)CLK50_0.clk,(SLAVE)PO_KNN_DADOS_PRONTO.clk,(SLAVE)TIMER_0.clk,(SLAVE)SDRAM_0.clk,(SLAVE)PIO_0.clk,(SLAVE)PO_KNN_DADOS.clk,(SLAVE)PO_KNN_RESET.clk,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.clk,(SLAVE)VGA_PLL_0.inclk_interface,(SLAVE)MMU_0.clk1,(SLAVE)TIMER_1.clk,(SLAVE)USB_0.clk,(SLAVE)PI_KNN_CLASSE_PREVISTA.clk,(SLAVE)RS232_0.clk,(SLAVE)PO_KNN_DADOS_ATRIBUTO.clk,(SLAVE)PO_KNN_K.clk) 1 0 2 220 870 660
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_reset_out,(SLAVE)PO_KNN_RESET.external_connection) 1 0 2 NJ 360 NJ
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.vga_0_external_interface,(SLAVE)VGA_0.external_interface) 1 0 5 NJ 840 NJ 840 NJ 840 NJ 840 NJ
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.pio_0_external_connection,(SLAVE)PIO_0.external_connection) 1 0 2 NJ 1840 NJ
-preplace netloc INTERCONNECT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_DADOS_PRONTO.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(SLAVE)VGA_PLL_0.inclk_interface_reset,(SLAVE)SDRAM_0.reset,(SLAVE)PI_KNN_CLASSE_PREVISTA.reset,(SLAVE)PO_KNN_K.reset,(SLAVE)RS232_0.reset,(SLAVE)USB_0.reset,(MASTER)NIOS2_0.debug_reset_request,(SLAVE)PO_KNN_TREINAMENTO.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)VGA_0.reset,(SLAVE)NIOS2_0.reset,(SLAVE)MMU_0.reset1,(MASTER)CLK50_0.clk_reset,(SLAVE)VGA_BUFFER_0.reset,(SLAVE)PIO_0.reset,(SLAVE)PO_KNN_DADOS_ATRIBUTO.reset,(SLAVE)TIMER_1.reset,(SLAVE)JTAG_0.reset,(SLAVE)TIMER_0.reset,(SLAVE)PO_KNN_RESET.reset,(SLAVE)PO_KNN_DADOS.reset,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.reset) 1 0 5 260 910 640 940 940 880 1340 900 1690
-preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(MASTER)NIOS2_0.irq,(SLAVE)USB_0.interrupt,(SLAVE)TIMER_1.irq,(SLAVE)RS232_0.interrupt,(SLAVE)JTAG_0.irq,(SLAVE)TIMER_0.irq) 1 1 1 620
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_classe_prevista_pronto_in,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.external_connection) 1 0 2 NJ 560 NJ
-preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(MASTER)VGA_PLL_0.c0,(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(SLAVE)VGA_BUFFER_0.clk,(SLAVE)VGA_0.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_out) 1 2 3 960 860 1360 880 N
-preplace netloc POINT_TO_POINT<net_container>nios2_sopc</net_container>(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source,(SLAVE)VGA_0.avalon_vga_sink) 1 4 1 1710
+preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(SLAVE)VGA_0.clk,(SLAVE)VGA_BUFFER_0.clk,(MASTER)VGA_PLL_0.c0,(SLAVE)video_dual_clock_buffer_0.clock_stream_in) 1 2 3 980 860 1360 880 N
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PIO_0.external_connection,(SLAVE)nios2_sopc.pio_0_external_connection) 1 0 2 NJ 1840 NJ
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_dados_atributo_out,(SLAVE)PO_KNN_DADOS_ATRIBUTO.external_connection) 1 0 2 NJ 460 NJ
+preplace netloc INTERCONNECT<net_container>nios2_sopc</net_container>(SLAVE)JTAG_0.reset,(SLAVE)TIMER_1.reset,(MASTER)NIOS2_0.debug_reset_request,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.reset,(SLAVE)TIMER_0.reset,(SLAVE)VGA_0.reset,(SLAVE)PIO_0.reset,(SLAVE)MMU_0.reset1,(SLAVE)PI_KNN_CLASSE_PREVISTA_DISTANCIA.reset,(SLAVE)NIOS2_0.reset,(SLAVE)PO_KNN_TREINAMENTO.reset,(SLAVE)PI_KNN_CLASSE_PREVISTA.reset,(SLAVE)PO_KNN_RESET.reset,(MASTER)CLK50_0.clk_reset,(SLAVE)PO_KNN_K.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)RS232_0.reset,(SLAVE)PO_KNN_DADOS_PRONTO.reset,(SLAVE)PO_KNN_DADOS.reset,(SLAVE)VGA_BUFFER_0.reset,(SLAVE)PO_KNN_DADOS_ATRIBUTO.reset,(SLAVE)VGA_PLL_0.inclk_interface_reset,(SLAVE)SDRAM_0.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(SLAVE)USB_0.reset) 1 0 5 260 910 680 880 940 880 1340 1040 1710
+preplace netloc INTERCONNECT<net_container>nios2_sopc</net_container>(SLAVE)JTAG_0.avalon_jtag_slave,(SLAVE)PO_KNN_RESET.s1,(SLAVE)PO_KNN_K.s1,(SLAVE)PI_KNN_CLASSE_PREVISTA.s1,(MASTER)NIOS2_0.data_master,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.s1,(SLAVE)NIOS2_0.debug_mem_slave,(SLAVE)MMU_0.s1,(SLAVE)MMU_0.s2,(SLAVE)SDRAM_0.s1,(SLAVE)PO_KNN_DADOS_PRONTO.s1,(MASTER)NIOS2_0.instruction_master,(SLAVE)VGA_PLL_0.pll_slave,(SLAVE)RS232_0.avalon_rs232_slave,(SLAVE)PO_KNN_TREINAMENTO.s1,(SLAVE)PO_KNN_DADOS.s1,(SLAVE)USB_0.avalon_usb_slave,(SLAVE)VGA_BUFFER_0.avalon_char_control_slave,(SLAVE)TIMER_0.s1,(SLAVE)PO_KNN_DADOS_ATRIBUTO.s1,(SLAVE)PI_KNN_CLASSE_PREVISTA_DISTANCIA.s1,(SLAVE)PIO_0.s1,(SLAVE)VGA_BUFFER_0.avalon_char_buffer_slave,(SLAVE)TIMER_1.s1) 1 0 3 240 890 660 860 960
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.usb_0_external_interface,(SLAVE)USB_0.external_interface) 1 0 2 NJ 1140 NJ
+preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(SLAVE)USB_0.interrupt,(SLAVE)TIMER_1.irq,(SLAVE)TIMER_0.irq,(SLAVE)RS232_0.interrupt,(SLAVE)JTAG_0.irq,(MASTER)NIOS2_0.irq) 1 1 1 620
+preplace netloc FAN_OUT<net_container>nios2_sopc</net_container>(SLAVE)JTAG_0.clk,(SLAVE)PO_KNN_K.clk,(SLAVE)MMU_0.clk1,(SLAVE)PI_KNN_CLASSE_PREVISTA_DISTANCIA.clk,(SLAVE)PO_KNN_RESET.clk,(SLAVE)PO_KNN_TREINAMENTO.clk,(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.clk,(SLAVE)NIOS2_0.clk,(SLAVE)PO_KNN_DADOS_ATRIBUTO.clk,(SLAVE)PO_KNN_DADOS_PRONTO.clk,(SLAVE)PIO_0.clk,(MASTER)CLK50_0.clk,(SLAVE)USB_0.clk,(SLAVE)TIMER_1.clk,(SLAVE)VGA_PLL_0.inclk_interface,(SLAVE)TIMER_0.clk,(SLAVE)PI_KNN_CLASSE_PREVISTA.clk,(SLAVE)SDRAM_0.clk,(SLAVE)RS232_0.clk,(SLAVE)PO_KNN_DADOS.clk) 1 0 2 220 870 640
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)VGA_0.external_interface,(SLAVE)nios2_sopc.vga_0_external_interface) 1 0 5 NJ 830 NJ 840 NJ 840 NJ 840 NJ
+preplace netloc POINT_TO_POINT<net_container>nios2_sopc</net_container>(SLAVE)VGA_0.avalon_vga_sink,(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source) 1 4 1 1690
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_k,(SLAVE)PO_KNN_K.external_connection) 1 0 2 NJ 60 NJ
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_DADOS.external_connection,(SLAVE)nios2_sopc.knn_dados_valor_out) 1 0 2 NJ 660 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.sdram_0_wire,(SLAVE)SDRAM_0.wire) 1 0 2 NJ 1780 NJ
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_dados_valor_out,(SLAVE)PO_KNN_DADOS.external_connection) 1 0 2 NJ 660 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_dados_pronto_out,(SLAVE)PO_KNN_DADOS_PRONTO.external_connection) 1 0 2 NJ 160 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.clk50_0,(SLAVE)CLK50_0.clk_in) 1 0 1 NJ
 preplace netloc POINT_TO_POINT<net_container>nios2_sopc</net_container>(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink,(MASTER)VGA_BUFFER_0.avalon_char_source) 1 3 1 N
-preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.rs232_0_external_interface,(SLAVE)RS232_0.external_interface) 1 0 2 NJ 1120 NJ
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.rs232_0_external_interface,(SLAVE)RS232_0.external_interface) 1 0 2 NJ 850 NJ
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PI_KNN_CLASSE_PREVISTA_PRONTO.external_connection,(SLAVE)nios2_sopc.knn_classe_prevista_pronto_in) 1 0 2 NJ 560 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.reset_clk50_0,(SLAVE)CLK50_0.clk_in_reset) 1 0 1 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_TREINAMENTO.external_connection,(SLAVE)nios2_sopc.knn_treinamento_out) 1 0 2 NJ 760 NJ
+preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)PO_KNN_RESET.external_connection,(SLAVE)nios2_sopc.knn_reset_out) 1 0 2 NJ 360 NJ
 preplace netloc EXPORT<net_container>nios2_sopc</net_container>(SLAVE)nios2_sopc.knn_classe_prevista_in,(SLAVE)PI_KNN_CLASSE_PREVISTA.external_connection) 1 0 2 NJ 260 NJ
 levelinfo -pg 1 0 190 1940
 levelinfo -hier nios2_sopc 200 380 750 1030 1410 1780 1930

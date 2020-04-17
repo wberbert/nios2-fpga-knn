@@ -6,7 +6,7 @@ module nios2_sopc (
 	knn_dados_atributo_out_export,
 	knn_dados_pronto_out_export,
 	knn_dados_valor_out_export,
-	knn_k_export,
+	knn_k_out_export,
 	knn_reset_out_export,
 	knn_treinamento_out_export,
 	pio_0_external_connection_export,
@@ -37,7 +37,8 @@ module nios2_sopc (
 	vga_0_external_interface_SYNC,
 	vga_0_external_interface_R,
 	vga_0_external_interface_G,
-	vga_0_external_interface_B);	
+	vga_0_external_interface_B,
+	knn_classe_prevista_distancia_in_export);	
 
 	input		clk50_0_clk;
 	input	[15:0]	knn_classe_prevista_in_export;
@@ -45,7 +46,7 @@ module nios2_sopc (
 	output	[7:0]	knn_dados_atributo_out_export;
 	output		knn_dados_pronto_out_export;
 	output	[15:0]	knn_dados_valor_out_export;
-	output	[3:0]	knn_k_export;
+	output	[3:0]	knn_k_out_export;
 	output		knn_reset_out_export;
 	output		knn_treinamento_out_export;
 	output	[7:0]	pio_0_external_connection_export;
@@ -77,4 +78,5 @@ module nios2_sopc (
 	output	[7:0]	vga_0_external_interface_R;
 	output	[7:0]	vga_0_external_interface_G;
 	output	[7:0]	vga_0_external_interface_B;
+	input	[15:0]	knn_classe_prevista_distancia_in_export;
 endmodule

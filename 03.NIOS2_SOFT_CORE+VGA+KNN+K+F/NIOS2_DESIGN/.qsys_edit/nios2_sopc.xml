@@ -888,7 +888,7 @@
 														</entry>
 													</placeholder-map>
 												</leaf>
-												<leaf id="1" nodeId="1375985011087">
+												<leaf id="0" nodeId="1375985011087">
 													<placeholders>
 														<placeholder>dock.single.Hierarchy</placeholder>
 													</placeholders>
@@ -912,7 +912,7 @@
 													</placeholder-map>
 												</leaf>
 											</node>
-											<node nodeId="1372710005725" orientation="VERTICAL" divider="0.75">
+											<node nodeId="1372710005725" orientation="VERTICAL" divider="0.711038961038961">
 												<node nodeId="1372710005727" orientation="HORIZONTAL" divider="0.6725558362303979">
 													<node nodeId="1372710005733" orientation="VERTICAL" divider="0.75">
 														<leaf id="-1" nodeId="1372710005735">
@@ -971,7 +971,7 @@
 													<node nodeId="1389812802503" orientation="VERTICAL" divider="0.6704331450094162">
 														<node nodeId="1568934298446" orientation="HORIZONTAL" divider="0.7855376034814797">
 															<node nodeId="1568934306955" orientation="VERTICAL" divider="0.38929088277858176">
-																<leaf id="0" nodeId="1568934304836">
+																<leaf id="2" nodeId="1568934304836">
 																	<placeholders>
 																		<placeholder>dock.single.System\ Contents</placeholder>
 																	</placeholders>
@@ -1004,7 +1004,7 @@
 																</leaf>
 															</node>
 															<node nodeId="1568934311121" orientation="HORIZONTAL" divider="0.6">
-																<leaf id="3" nodeId="1568934311119">
+																<leaf id="1" nodeId="1568934311119">
 																	<placeholders>
 																		<placeholder>dock.single.Parameters</placeholder>
 																	</placeholders>
@@ -1038,7 +1038,7 @@
 														</leaf>
 													</node>
 												</node>
-												<leaf id="2" nodeId="1372710005745">
+												<leaf id="3" nodeId="1372710005745">
 													<placeholders>
 														<placeholder>dock.single.Messages</placeholder>
 														<placeholder>dock.single.Generation\ Messages</placeholder>
@@ -1069,16 +1069,6 @@
 								</layout>
 							</adjacent>
 							<children ignore="false">
-								<child>
-									<layout factory="predefined" placeholder="dock.single.System\ Contents">
-										<replacement id="dockablesingle System Contents"/>
-										<delegate id="delegate_ccontrol backup factory id">
-											<id>System Contents</id>
-											<area/>
-										</delegate>
-									</layout>
-									<children ignore="false"/>
-								</child>
 								<child>
 									<layout factory="delegate_StackDockStationFactory">
 										<selected>0</selected>
@@ -1139,20 +1129,30 @@
 									</children>
 								</child>
 								<child>
-									<layout factory="predefined" placeholder="dock.single.Messages">
-										<replacement id="dockablesingle Messages"/>
+									<layout factory="predefined" placeholder="dock.single.Parameters">
+										<replacement id="dockablesingle Parameters"/>
 										<delegate id="delegate_ccontrol backup factory id">
-											<id>Messages</id>
+											<id>Parameters</id>
 											<area/>
 										</delegate>
 									</layout>
 									<children ignore="false"/>
 								</child>
 								<child>
-									<layout factory="predefined" placeholder="dock.single.Parameters">
-										<replacement id="dockablesingle Parameters"/>
+									<layout factory="predefined" placeholder="dock.single.System\ Contents">
+										<replacement id="dockablesingle System Contents"/>
 										<delegate id="delegate_ccontrol backup factory id">
-											<id>Parameters</id>
+											<id>System Contents</id>
+											<area/>
+										</delegate>
+									</layout>
+									<children ignore="false"/>
+								</child>
+								<child>
+									<layout factory="predefined" placeholder="dock.single.Messages">
+										<replacement id="dockablesingle Messages"/>
+										<delegate id="delegate_ccontrol backup factory id">
+											<id>Messages</id>
 											<area/>
 										</delegate>
 									</layout>

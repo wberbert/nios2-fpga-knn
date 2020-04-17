@@ -1,5 +1,5 @@
 Flow report for KNN_NIOS2
-Mon Dec  2 20:38:58 2019
+Thu Apr 16 22:25:45 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,21 +40,21 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Dec  2 20:38:58 2019       ;
+; Flow Status                        ; Successful - Thu Apr 16 22:25:45 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; KNN_NIOS2                                   ;
 ; Top-level Entity Name              ; KNN_NIOS2                                   ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 111,965 / 114,480 ( 98 % )                  ;
-;     Total combinational functions  ; 110,316 / 114,480 ( 96 % )                  ;
-;     Dedicated logic registers      ; 9,154 / 114,480 ( 8 % )                     ;
-; Total registers                    ; 9273                                        ;
+; Total logic elements               ; 84,564 / 114,480 ( 74 % )                   ;
+;     Total combinational functions  ; 83,084 / 114,480 ( 73 % )                   ;
+;     Dedicated logic registers      ; 6,522 / 114,480 ( 6 % )                     ;
+; Total registers                    ; 6641                                        ;
 ; Total pins                         ; 132 / 529 ( 25 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 155,968 / 3,981,312 ( 4 % )                 ;
-; Embedded Multiplier 9-bit elements ; 510 / 532 ( 96 % )                          ;
+; Embedded Multiplier 9-bit elements ; 126 / 532 ( 24 % )                          ;
 ; Total PLLs                         ; 2 / 4 ( 50 % )                              ;
 +------------------------------------+---------------------------------------------+
 
@@ -64,49 +64,46 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/02/2019 19:19:18 ;
+; Start date & time ; 04/16/2020 22:10:58 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; KNN_NIOS2           ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                         ;
-+--------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
-; Assignment Name                      ; Value                                                        ; Default Value ; Entity Name ; Section Id           ;
-+--------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
-; COMPILER_SIGNATURE_ID                ; 123719794671020.157532515812160                              ; --            ; --          ; --                   ;
-; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL      ; Precision Synthesis                                          ; <None>        ; --          ; --                   ;
-; EDA_INPUT_DATA_FORMAT                ; Vqm                                                          ; --            ; --          ; eda_design_synthesis ;
-; EDA_LMF_FILE                         ; mentor.lmf                                                   ; --            ; --          ; eda_design_synthesis ;
-; FITTER_EFFORT                        ; Standard Fit                                                 ; Auto Fit      ; --          ; --                   ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                                           ; --            ; --          ; --                   ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                                            ; --            ; --          ; --                   ;
-; MISC_FILE                            ; NIOS2_DESIGN/nios2_sopc/synthesis/../nios2_sopc.cmp          ; --            ; --          ; --                   ;
-; MISC_FILE                            ; NIOS2_DESIGN/nios2_sopc/synthesis/../../nios2_sopc.qsys      ; --            ; --          ; --                   ;
-; MISC_FILE                            ; NIOS2_PLL/nios2_pll0_bb.v                                    ; --            ; --          ; --                   ;
-; MISC_FILE                            ; NIOS2_PLL/nios2_pll0.ppf                                     ; --            ; --          ; --                   ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                                         ; --            ; --          ; --                   ;
-; OPTIMIZATION_MODE                    ; High Performance Effort                                      ; Balanced      ; --          ; --                   ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
-; PHYSICAL_SYNTHESIS_COMBO_LOGIC       ; On                                                           ; Off           ; --          ; --                   ;
-; PHYSICAL_SYNTHESIS_REGISTER_RETIMING ; On                                                           ; Off           ; --          ; --                   ;
-; PLACEMENT_EFFORT_MULTIPLIER          ; 4.0                                                          ; 1.0           ; --          ; --                   ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                                          ; --            ; --          ; --                   ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                        ; --            ; --          ; --                   ;
-; POWER_USE_DEVICE_CHARACTERISTICS     ; MAXIMUM                                                      ; TYPICAL       ; --          ; --                   ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                                                 ; --            ; --          ; --                   ;
-; ROUTER_TIMING_OPTIMIZATION_LEVEL     ; MAXIMUM                                                      ; Normal        ; --          ; --                   ;
-; SLD_FILE                             ; NIOS2_DESIGN/nios2_sopc/synthesis/nios2_sopc.regmap          ; --            ; --          ; --                   ;
-; SLD_FILE                             ; NIOS2_DESIGN/nios2_sopc/synthesis/nios2_sopc.debuginfo       ; --            ; --          ; --                   ;
-; SLD_INFO                             ; QSYS_NAME nios2_sopc HAS_SOPCINFO 1 GENERATION_ID 1575073873 ; --            ; nios2_sopc  ; --                   ;
-; SOPCINFO_FILE                        ; NIOS2_DESIGN/nios2_sopc/synthesis/../../nios2_sopc.sopcinfo  ; --            ; --          ; --                   ;
-; SYNTHESIS_ONLY_QIP                   ; On                                                           ; --            ; --          ; --                   ;
-; VHDL_INPUT_VERSION                   ; VHDL_2008                                                    ; VHDL_1993     ; --          ; --                   ;
-; VHDL_SHOW_LMF_MAPPING_MESSAGES       ; Off                                                          ; --            ; --          ; --                   ;
-+--------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                        ;
++-------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
+; Assignment Name                     ; Value                                                        ; Default Value ; Entity Name ; Section Id           ;
++-------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
+; COMPILER_SIGNATURE_ID               ; 123719794671020.158708585825223                              ; --            ; --          ; --                   ;
+; CYCLONEII_OPTIMIZATION_TECHNIQUE    ; Speed                                                        ; Balanced      ; --          ; --                   ;
+; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL     ; Precision Synthesis                                          ; <None>        ; --          ; --                   ;
+; EDA_INPUT_DATA_FORMAT               ; Vqm                                                          ; --            ; --          ; eda_design_synthesis ;
+; EDA_LMF_FILE                        ; mentor.lmf                                                   ; --            ; --          ; eda_design_synthesis ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                           ; --            ; --          ; --                   ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                            ; --            ; --          ; --                   ;
+; MISC_FILE                           ; NIOS2_DESIGN/nios2_sopc/synthesis/../nios2_sopc.cmp          ; --            ; --          ; --                   ;
+; MISC_FILE                           ; NIOS2_DESIGN/nios2_sopc/synthesis/../../nios2_sopc.qsys      ; --            ; --          ; --                   ;
+; MISC_FILE                           ; NIOS2_PLL/nios2_pll0_bb.v                                    ; --            ; --          ; --                   ;
+; MISC_FILE                           ; NIOS2_PLL/nios2_pll0.ppf                                     ; --            ; --          ; --                   ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                         ; --            ; --          ; --                   ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                       ; --            ; --          ; Top                  ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                          ; --            ; --          ; --                   ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                        ; --            ; --          ; --                   ;
+; POWER_USE_DEVICE_CHARACTERISTICS    ; MAXIMUM                                                      ; TYPICAL       ; --          ; --                   ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                 ; --            ; --          ; --                   ;
+; SLD_FILE                            ; NIOS2_DESIGN/nios2_sopc/synthesis/nios2_sopc.regmap          ; --            ; --          ; --                   ;
+; SLD_FILE                            ; NIOS2_DESIGN/nios2_sopc/synthesis/nios2_sopc.debuginfo       ; --            ; --          ; --                   ;
+; SLD_INFO                            ; QSYS_NAME nios2_sopc HAS_SOPCINFO 1 GENERATION_ID 1586571542 ; --            ; nios2_sopc  ; --                   ;
+; SMART_RECOMPILE                     ; On                                                           ; Off           ; --          ; --                   ;
+; SOPCINFO_FILE                       ; NIOS2_DESIGN/nios2_sopc/synthesis/../../nios2_sopc.sopcinfo  ; --            ; --          ; --                   ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                           ; --            ; --          ; --                   ;
+; SYNTH_MESSAGE_LEVEL                 ; High                                                         ; Medium        ; --          ; --                   ;
+; VHDL_INPUT_VERSION                  ; VHDL_2008                                                    ; VHDL_1993     ; --          ; --                   ;
+; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                                          ; --            ; --          ; --                   ;
++-------------------------------------+--------------------------------------------------------------+---------------+-------------+----------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -114,11 +111,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:57:25     ; 1.0                     ; 2132 MB             ; 00:58:05                           ;
-; Fitter               ; 00:20:59     ; 1.0                     ; 3235 MB             ; 00:47:52                           ;
-; Assembler            ; 00:00:09     ; 1.0                     ; 1325 MB             ; 00:00:09                           ;
-; Timing Analyzer      ; 00:00:28     ; 1.4                     ; 1828 MB             ; 00:00:37                           ;
-; Total                ; 01:19:01     ; --                      ; --                  ; 01:46:43                           ;
+; Analysis & Synthesis ; 00:05:55     ; 1.0                     ; 1827 MB             ; 00:07:06                           ;
+; Fitter               ; 00:07:50     ; 1.0                     ; 2824 MB             ; 00:17:06                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 1254 MB             ; 00:00:08                           ;
+; Timing Analyzer      ; 00:00:22     ; 1.4                     ; 1669 MB             ; 00:00:29                           ;
+; Total                ; 00:14:15     ; --                      ; --                  ; 00:24:49                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

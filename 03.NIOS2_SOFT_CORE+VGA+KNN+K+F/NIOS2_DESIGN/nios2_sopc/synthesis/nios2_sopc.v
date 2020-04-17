@@ -4,44 +4,45 @@
 
 `timescale 1 ps / 1 ps
 module nios2_sopc (
-		input  wire        clk50_0_clk,                          //                       clk50_0.clk
-		input  wire [15:0] knn_classe_prevista_in_export,        //        knn_classe_prevista_in.export
-		input  wire        knn_classe_prevista_pronto_in_export, // knn_classe_prevista_pronto_in.export
-		output wire [7:0]  knn_dados_atributo_out_export,        //        knn_dados_atributo_out.export
-		output wire        knn_dados_pronto_out_export,          //          knn_dados_pronto_out.export
-		output wire [15:0] knn_dados_valor_out_export,           //           knn_dados_valor_out.export
-		output wire [3:0]  knn_k_export,                         //                         knn_k.export
-		output wire        knn_reset_out_export,                 //                 knn_reset_out.export
-		output wire        knn_treinamento_out_export,           //           knn_treinamento_out.export
-		output wire [7:0]  pio_0_external_connection_export,     //     pio_0_external_connection.export
-		input  wire        reset_clk50_0_reset_n,                //                 reset_clk50_0.reset_n
-		input  wire        rs232_0_external_interface_RXD,       //    rs232_0_external_interface.RXD
-		output wire        rs232_0_external_interface_TXD,       //                              .TXD
-		output wire [12:0] sdram_0_wire_addr,                    //                  sdram_0_wire.addr
-		output wire [1:0]  sdram_0_wire_ba,                      //                              .ba
-		output wire        sdram_0_wire_cas_n,                   //                              .cas_n
-		output wire        sdram_0_wire_cke,                     //                              .cke
-		output wire        sdram_0_wire_cs_n,                    //                              .cs_n
-		inout  wire [31:0] sdram_0_wire_dq,                      //                              .dq
-		output wire [3:0]  sdram_0_wire_dqm,                     //                              .dqm
-		output wire        sdram_0_wire_ras_n,                   //                              .ras_n
-		output wire        sdram_0_wire_we_n,                    //                              .we_n
-		input  wire        usb_0_external_interface_INT1,        //      usb_0_external_interface.INT1
-		inout  wire [15:0] usb_0_external_interface_DATA,        //                              .DATA
-		output wire        usb_0_external_interface_RST_N,       //                              .RST_N
-		output wire [1:0]  usb_0_external_interface_ADDR,        //                              .ADDR
-		output wire        usb_0_external_interface_CS_N,        //                              .CS_N
-		output wire        usb_0_external_interface_RD_N,        //                              .RD_N
-		output wire        usb_0_external_interface_WR_N,        //                              .WR_N
-		input  wire        usb_0_external_interface_INT0,        //                              .INT0
-		output wire        vga_0_external_interface_CLK,         //      vga_0_external_interface.CLK
-		output wire        vga_0_external_interface_HS,          //                              .HS
-		output wire        vga_0_external_interface_VS,          //                              .VS
-		output wire        vga_0_external_interface_BLANK,       //                              .BLANK
-		output wire        vga_0_external_interface_SYNC,        //                              .SYNC
-		output wire [7:0]  vga_0_external_interface_R,           //                              .R
-		output wire [7:0]  vga_0_external_interface_G,           //                              .G
-		output wire [7:0]  vga_0_external_interface_B            //                              .B
+		input  wire        clk50_0_clk,                             //                          clk50_0.clk
+		input  wire [15:0] knn_classe_prevista_distancia_in_export, // knn_classe_prevista_distancia_in.export
+		input  wire [15:0] knn_classe_prevista_in_export,           //           knn_classe_prevista_in.export
+		input  wire        knn_classe_prevista_pronto_in_export,    //    knn_classe_prevista_pronto_in.export
+		output wire [7:0]  knn_dados_atributo_out_export,           //           knn_dados_atributo_out.export
+		output wire        knn_dados_pronto_out_export,             //             knn_dados_pronto_out.export
+		output wire [15:0] knn_dados_valor_out_export,              //              knn_dados_valor_out.export
+		output wire [3:0]  knn_k_out_export,                        //                        knn_k_out.export
+		output wire        knn_reset_out_export,                    //                    knn_reset_out.export
+		output wire        knn_treinamento_out_export,              //              knn_treinamento_out.export
+		output wire [7:0]  pio_0_external_connection_export,        //        pio_0_external_connection.export
+		input  wire        reset_clk50_0_reset_n,                   //                    reset_clk50_0.reset_n
+		input  wire        rs232_0_external_interface_RXD,          //       rs232_0_external_interface.RXD
+		output wire        rs232_0_external_interface_TXD,          //                                 .TXD
+		output wire [12:0] sdram_0_wire_addr,                       //                     sdram_0_wire.addr
+		output wire [1:0]  sdram_0_wire_ba,                         //                                 .ba
+		output wire        sdram_0_wire_cas_n,                      //                                 .cas_n
+		output wire        sdram_0_wire_cke,                        //                                 .cke
+		output wire        sdram_0_wire_cs_n,                       //                                 .cs_n
+		inout  wire [31:0] sdram_0_wire_dq,                         //                                 .dq
+		output wire [3:0]  sdram_0_wire_dqm,                        //                                 .dqm
+		output wire        sdram_0_wire_ras_n,                      //                                 .ras_n
+		output wire        sdram_0_wire_we_n,                       //                                 .we_n
+		input  wire        usb_0_external_interface_INT1,           //         usb_0_external_interface.INT1
+		inout  wire [15:0] usb_0_external_interface_DATA,           //                                 .DATA
+		output wire        usb_0_external_interface_RST_N,          //                                 .RST_N
+		output wire [1:0]  usb_0_external_interface_ADDR,           //                                 .ADDR
+		output wire        usb_0_external_interface_CS_N,           //                                 .CS_N
+		output wire        usb_0_external_interface_RD_N,           //                                 .RD_N
+		output wire        usb_0_external_interface_WR_N,           //                                 .WR_N
+		input  wire        usb_0_external_interface_INT0,           //                                 .INT0
+		output wire        vga_0_external_interface_CLK,            //         vga_0_external_interface.CLK
+		output wire        vga_0_external_interface_HS,             //                                 .HS
+		output wire        vga_0_external_interface_VS,             //                                 .VS
+		output wire        vga_0_external_interface_BLANK,          //                                 .BLANK
+		output wire        vga_0_external_interface_SYNC,           //                                 .SYNC
+		output wire [7:0]  vga_0_external_interface_R,              //                                 .R
+		output wire [7:0]  vga_0_external_interface_G,              //                                 .G
+		output wire [7:0]  vga_0_external_interface_B               //                                 .B
 	);
 
 	wire         vga_buffer_0_avalon_char_source_valid;                               // VGA_BUFFER_0:stream_valid -> video_dual_clock_buffer_0:stream_in_valid
@@ -175,6 +176,8 @@ module nios2_sopc (
 	wire   [1:0] mm_interconnect_0_po_knn_k_s1_address;                               // mm_interconnect_0:PO_KNN_K_s1_address -> PO_KNN_K:address
 	wire         mm_interconnect_0_po_knn_k_s1_write;                                 // mm_interconnect_0:PO_KNN_K_s1_write -> PO_KNN_K:write_n
 	wire  [31:0] mm_interconnect_0_po_knn_k_s1_writedata;                             // mm_interconnect_0:PO_KNN_K_s1_writedata -> PO_KNN_K:writedata
+	wire  [31:0] mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_readdata;      // PI_KNN_CLASSE_PREVISTA_DISTANCIA:readdata -> mm_interconnect_0:PI_KNN_CLASSE_PREVISTA_DISTANCIA_s1_readdata
+	wire   [1:0] mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_address;       // mm_interconnect_0:PI_KNN_CLASSE_PREVISTA_DISTANCIA_s1_address -> PI_KNN_CLASSE_PREVISTA_DISTANCIA:address
 	wire         mm_interconnect_0_vga_buffer_0_avalon_char_control_slave_chipselect; // mm_interconnect_0:VGA_BUFFER_0_avalon_char_control_slave_chipselect -> VGA_BUFFER_0:ctrl_chipselect
 	wire  [31:0] mm_interconnect_0_vga_buffer_0_avalon_char_control_slave_readdata;   // VGA_BUFFER_0:ctrl_readdata -> mm_interconnect_0:VGA_BUFFER_0_avalon_char_control_slave_readdata
 	wire   [0:0] mm_interconnect_0_vga_buffer_0_avalon_char_control_slave_address;    // mm_interconnect_0:VGA_BUFFER_0_avalon_char_control_slave_address -> VGA_BUFFER_0:ctrl_address
@@ -195,7 +198,7 @@ module nios2_sopc (
 	wire         irq_mapper_receiver3_irq;                                            // TIMER_1:irq -> irq_mapper:receiver3_irq
 	wire         irq_mapper_receiver4_irq;                                            // TIMER_0:irq -> irq_mapper:receiver4_irq
 	wire  [31:0] nios2_0_irq_irq;                                                     // irq_mapper:sender_irq -> NIOS2_0:irq
-	wire         rst_controller_reset_out_reset;                                      // rst_controller:reset_out -> [JTAG_0:rst_n, MMU_0:reset, NIOS2_0:reset_n, PIO_0:reset_n, PI_KNN_CLASSE_PREVISTA:reset_n, PI_KNN_CLASSE_PREVISTA_PRONTO:reset_n, PO_KNN_DADOS:reset_n, PO_KNN_DADOS_ATRIBUTO:reset_n, PO_KNN_DADOS_PRONTO:reset_n, PO_KNN_K:reset_n, PO_KNN_RESET:reset_n, PO_KNN_TREINAMENTO:reset_n, RS232_0:reset, SDRAM_0:reset_n, TIMER_0:reset_n, TIMER_1:reset_n, USB_0:reset, VGA_PLL_0:reset, irq_mapper:reset, mm_interconnect_0:NIOS2_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset;                                      // rst_controller:reset_out -> [JTAG_0:rst_n, MMU_0:reset, NIOS2_0:reset_n, PIO_0:reset_n, PI_KNN_CLASSE_PREVISTA:reset_n, PI_KNN_CLASSE_PREVISTA_DISTANCIA:reset_n, PI_KNN_CLASSE_PREVISTA_PRONTO:reset_n, PO_KNN_DADOS:reset_n, PO_KNN_DADOS_ATRIBUTO:reset_n, PO_KNN_DADOS_PRONTO:reset_n, PO_KNN_K:reset_n, PO_KNN_RESET:reset_n, PO_KNN_TREINAMENTO:reset_n, RS232_0:reset, SDRAM_0:reset_n, TIMER_0:reset_n, TIMER_1:reset_n, USB_0:reset, VGA_PLL_0:reset, irq_mapper:reset, mm_interconnect_0:NIOS2_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                  // rst_controller:reset_req -> [MMU_0:reset_req, NIOS2_0:reset_req, rst_translator:reset_req_in]
 	wire         nios2_0_debug_reset_request_reset;                                   // NIOS2_0:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                  // rst_controller_001:reset_out -> [VGA_0:reset, VGA_BUFFER_0:reset, mm_interconnect_0:VGA_BUFFER_0_reset_reset_bridge_in_reset_reset]
@@ -285,6 +288,14 @@ module nios2_sopc (
 		.in_port  (knn_classe_prevista_in_export)                         // external_connection.export
 	);
 
+	nios2_sopc_PI_KNN_CLASSE_PREVISTA pi_knn_classe_prevista_distancia (
+		.clk      (clk50_0_clk),                                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                                //               reset.reset_n
+		.address  (mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_readdata), //                    .readdata
+		.in_port  (knn_classe_prevista_distancia_in_export)                         // external_connection.export
+	);
+
 	nios2_sopc_PI_KNN_CLASSE_PREVISTA_PRONTO pi_knn_classe_prevista_pronto (
 		.clk      (clk50_0_clk),                                                 //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),                             //               reset.reset_n
@@ -334,7 +345,7 @@ module nios2_sopc (
 		.writedata  (mm_interconnect_0_po_knn_k_s1_writedata),  //                    .writedata
 		.chipselect (mm_interconnect_0_po_knn_k_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_po_knn_k_s1_readdata),   //                    .readdata
-		.out_port   (knn_k_export)                              // external_connection.export
+		.out_port   (knn_k_out_export)                          // external_connection.export
 	);
 
 	nios2_sopc_PO_KNN_DADOS_PRONTO po_knn_reset (
@@ -572,6 +583,8 @@ module nios2_sopc (
 		.NIOS2_0_debug_mem_slave_debugaccess               (mm_interconnect_0_nios2_0_debug_mem_slave_debugaccess),               //                                         .debugaccess
 		.PI_KNN_CLASSE_PREVISTA_s1_address                 (mm_interconnect_0_pi_knn_classe_prevista_s1_address),                 //                PI_KNN_CLASSE_PREVISTA_s1.address
 		.PI_KNN_CLASSE_PREVISTA_s1_readdata                (mm_interconnect_0_pi_knn_classe_prevista_s1_readdata),                //                                         .readdata
+		.PI_KNN_CLASSE_PREVISTA_DISTANCIA_s1_address       (mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_address),       //      PI_KNN_CLASSE_PREVISTA_DISTANCIA_s1.address
+		.PI_KNN_CLASSE_PREVISTA_DISTANCIA_s1_readdata      (mm_interconnect_0_pi_knn_classe_prevista_distancia_s1_readdata),      //                                         .readdata
 		.PI_KNN_CLASSE_PREVISTA_PRONTO_s1_address          (mm_interconnect_0_pi_knn_classe_prevista_pronto_s1_address),          //         PI_KNN_CLASSE_PREVISTA_PRONTO_s1.address
 		.PI_KNN_CLASSE_PREVISTA_PRONTO_s1_readdata         (mm_interconnect_0_pi_knn_classe_prevista_pronto_s1_readdata),         //                                         .readdata
 		.PIO_0_s1_address                                  (mm_interconnect_0_pio_0_s1_address),                                  //                                 PIO_0_s1.address

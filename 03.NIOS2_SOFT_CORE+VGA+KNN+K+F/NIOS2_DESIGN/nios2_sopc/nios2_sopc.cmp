@@ -1,43 +1,44 @@
 	component nios2_sopc is
 		port (
-			clk50_0_clk                          : in    std_logic                     := 'X';             -- clk
-			knn_classe_prevista_in_export        : in    std_logic_vector(15 downto 0) := (others => 'X'); -- export
-			knn_classe_prevista_pronto_in_export : in    std_logic                     := 'X';             -- export
-			knn_dados_atributo_out_export        : out   std_logic_vector(7 downto 0);                     -- export
-			knn_dados_pronto_out_export          : out   std_logic;                                        -- export
-			knn_dados_valor_out_export           : out   std_logic_vector(15 downto 0);                    -- export
-			knn_k_export                         : out   std_logic_vector(3 downto 0);                     -- export
-			knn_reset_out_export                 : out   std_logic;                                        -- export
-			knn_treinamento_out_export           : out   std_logic;                                        -- export
-			pio_0_external_connection_export     : out   std_logic_vector(7 downto 0);                     -- export
-			reset_clk50_0_reset_n                : in    std_logic                     := 'X';             -- reset_n
-			rs232_0_external_interface_RXD       : in    std_logic                     := 'X';             -- RXD
-			rs232_0_external_interface_TXD       : out   std_logic;                                        -- TXD
-			sdram_0_wire_addr                    : out   std_logic_vector(12 downto 0);                    -- addr
-			sdram_0_wire_ba                      : out   std_logic_vector(1 downto 0);                     -- ba
-			sdram_0_wire_cas_n                   : out   std_logic;                                        -- cas_n
-			sdram_0_wire_cke                     : out   std_logic;                                        -- cke
-			sdram_0_wire_cs_n                    : out   std_logic;                                        -- cs_n
-			sdram_0_wire_dq                      : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
-			sdram_0_wire_dqm                     : out   std_logic_vector(3 downto 0);                     -- dqm
-			sdram_0_wire_ras_n                   : out   std_logic;                                        -- ras_n
-			sdram_0_wire_we_n                    : out   std_logic;                                        -- we_n
-			usb_0_external_interface_INT1        : in    std_logic                     := 'X';             -- INT1
-			usb_0_external_interface_DATA        : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DATA
-			usb_0_external_interface_RST_N       : out   std_logic;                                        -- RST_N
-			usb_0_external_interface_ADDR        : out   std_logic_vector(1 downto 0);                     -- ADDR
-			usb_0_external_interface_CS_N        : out   std_logic;                                        -- CS_N
-			usb_0_external_interface_RD_N        : out   std_logic;                                        -- RD_N
-			usb_0_external_interface_WR_N        : out   std_logic;                                        -- WR_N
-			usb_0_external_interface_INT0        : in    std_logic                     := 'X';             -- INT0
-			vga_0_external_interface_CLK         : out   std_logic;                                        -- CLK
-			vga_0_external_interface_HS          : out   std_logic;                                        -- HS
-			vga_0_external_interface_VS          : out   std_logic;                                        -- VS
-			vga_0_external_interface_BLANK       : out   std_logic;                                        -- BLANK
-			vga_0_external_interface_SYNC        : out   std_logic;                                        -- SYNC
-			vga_0_external_interface_R           : out   std_logic_vector(7 downto 0);                     -- R
-			vga_0_external_interface_G           : out   std_logic_vector(7 downto 0);                     -- G
-			vga_0_external_interface_B           : out   std_logic_vector(7 downto 0)                      -- B
+			clk50_0_clk                             : in    std_logic                     := 'X';             -- clk
+			knn_classe_prevista_distancia_in_export : in    std_logic_vector(15 downto 0) := (others => 'X'); -- export
+			knn_classe_prevista_in_export           : in    std_logic_vector(15 downto 0) := (others => 'X'); -- export
+			knn_classe_prevista_pronto_in_export    : in    std_logic                     := 'X';             -- export
+			knn_dados_atributo_out_export           : out   std_logic_vector(7 downto 0);                     -- export
+			knn_dados_pronto_out_export             : out   std_logic;                                        -- export
+			knn_dados_valor_out_export              : out   std_logic_vector(15 downto 0);                    -- export
+			knn_k_out_export                        : out   std_logic_vector(3 downto 0);                     -- export
+			knn_reset_out_export                    : out   std_logic;                                        -- export
+			knn_treinamento_out_export              : out   std_logic;                                        -- export
+			pio_0_external_connection_export        : out   std_logic_vector(7 downto 0);                     -- export
+			reset_clk50_0_reset_n                   : in    std_logic                     := 'X';             -- reset_n
+			rs232_0_external_interface_RXD          : in    std_logic                     := 'X';             -- RXD
+			rs232_0_external_interface_TXD          : out   std_logic;                                        -- TXD
+			sdram_0_wire_addr                       : out   std_logic_vector(12 downto 0);                    -- addr
+			sdram_0_wire_ba                         : out   std_logic_vector(1 downto 0);                     -- ba
+			sdram_0_wire_cas_n                      : out   std_logic;                                        -- cas_n
+			sdram_0_wire_cke                        : out   std_logic;                                        -- cke
+			sdram_0_wire_cs_n                       : out   std_logic;                                        -- cs_n
+			sdram_0_wire_dq                         : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
+			sdram_0_wire_dqm                        : out   std_logic_vector(3 downto 0);                     -- dqm
+			sdram_0_wire_ras_n                      : out   std_logic;                                        -- ras_n
+			sdram_0_wire_we_n                       : out   std_logic;                                        -- we_n
+			usb_0_external_interface_INT1           : in    std_logic                     := 'X';             -- INT1
+			usb_0_external_interface_DATA           : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DATA
+			usb_0_external_interface_RST_N          : out   std_logic;                                        -- RST_N
+			usb_0_external_interface_ADDR           : out   std_logic_vector(1 downto 0);                     -- ADDR
+			usb_0_external_interface_CS_N           : out   std_logic;                                        -- CS_N
+			usb_0_external_interface_RD_N           : out   std_logic;                                        -- RD_N
+			usb_0_external_interface_WR_N           : out   std_logic;                                        -- WR_N
+			usb_0_external_interface_INT0           : in    std_logic                     := 'X';             -- INT0
+			vga_0_external_interface_CLK            : out   std_logic;                                        -- CLK
+			vga_0_external_interface_HS             : out   std_logic;                                        -- HS
+			vga_0_external_interface_VS             : out   std_logic;                                        -- VS
+			vga_0_external_interface_BLANK          : out   std_logic;                                        -- BLANK
+			vga_0_external_interface_SYNC           : out   std_logic;                                        -- SYNC
+			vga_0_external_interface_R              : out   std_logic_vector(7 downto 0);                     -- R
+			vga_0_external_interface_G              : out   std_logic_vector(7 downto 0);                     -- G
+			vga_0_external_interface_B              : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component nios2_sopc;
 

@@ -47,12 +47,12 @@ module nios2_sopc_mm_interconnect_0_router_001_default_decode
      parameter DEFAULT_CHANNEL = 2,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 14 
+               DEFAULT_DESTID = 15 
    )
   (output [94 - 90 : 0] default_destination_id,
-   output [21-1 : 0] default_wr_channel,
-   output [21-1 : 0] default_rd_channel,
-   output [21-1 : 0] default_src_channel
+   output [22-1 : 0] default_wr_channel,
+   output [22-1 : 0] default_rd_channel,
+   output [22-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module nios2_sopc_mm_interconnect_0_router_001_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 21'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 22'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module nios2_sopc_mm_interconnect_0_router_001_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 21'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 21'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 22'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 22'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module nios2_sopc_mm_interconnect_0_router_001
     // -------------------
     output                          src_valid,
     output reg [108-1    : 0] src_data,
-    output reg [21-1 : 0] src_channel,
+    output reg [22-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module nios2_sopc_mm_interconnect_0_router_001
     localparam PKT_PROTECTION_H = 98;
     localparam PKT_PROTECTION_L = 96;
     localparam ST_DATA_W = 108;
-    localparam ST_CHANNEL_W = 21;
+    localparam ST_CHANNEL_W = 22;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 66;
@@ -137,14 +137,14 @@ module nios2_sopc_mm_interconnect_0_router_001
     localparam PAD0 = log2ceil(64'h8000000 - 64'h0); 
     localparam PAD1 = log2ceil(64'h8003000 - 64'h8002800); 
     localparam PAD2 = log2ceil(64'h8003400 - 64'h8003000); 
-    localparam PAD3 = log2ceil(64'h8003510 - 64'h8003500); 
-    localparam PAD4 = log2ceil(64'h8003518 - 64'h8003510); 
+    localparam PAD3 = log2ceil(64'h8003520 - 64'h8003510); 
+    localparam PAD4 = log2ceil(64'h8003528 - 64'h8003520); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h8003518;
+    localparam ADDR_RANGE = 64'h8003528;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -168,7 +168,7 @@ module nios2_sopc_mm_interconnect_0_router_001
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [21-1 : 0] default_src_channel;
+    wire [22-1 : 0] default_src_channel;
 
 
 
@@ -194,32 +194,32 @@ module nios2_sopc_mm_interconnect_0_router_001
 
     // ( 0x0 .. 0x8000000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 28'h0   ) begin
-            src_channel = 21'b00100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 14;
+            src_channel = 22'b00100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 15;
     end
 
     // ( 0x8002800 .. 0x8003000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 28'h8002800   ) begin
-            src_channel = 21'b00010;
+            src_channel = 22'b00010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
     // ( 0x8003000 .. 0x8003400 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 28'h8003000   ) begin
-            src_channel = 21'b10000;
+            src_channel = 22'b10000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
-    // ( 0x8003500 .. 0x8003510 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 28'h8003500   ) begin
-            src_channel = 21'b00001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 17;
+    // ( 0x8003510 .. 0x8003520 )
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 28'h8003510   ) begin
+            src_channel = 22'b00001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 18;
     end
 
-    // ( 0x8003510 .. 0x8003518 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 28'h8003510   ) begin
-            src_channel = 21'b01000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 19;
+    // ( 0x8003520 .. 0x8003528 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 28'h8003520   ) begin
+            src_channel = 22'b01000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 20;
     end
 
 end

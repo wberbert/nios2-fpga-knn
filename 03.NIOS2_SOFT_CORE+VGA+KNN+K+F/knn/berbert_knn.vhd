@@ -6,22 +6,23 @@ use ieee.math_real.all;
 
 ENTITY knn is 
 	PORT (
-		CLOCK								: IN STD_LOGIC;
+		CLOCK									: IN STD_LOGIC;
 		
-		KNN_DADOS_VALOR				: IN 		STD_LOGIC_VECTOR(15 DOWNTO 0) 	:= "0000000000000000";	--Valor do atributo a ser pasada para o KNN.
-		KNN_DADOS_ATRIBUTO_N			: IN 		STD_LOGIC_VECTOR(7 DOWNTO 0) 		:= "00000000";				--Numero do atributo (0 a 255);
-		KNN_DADOS_PRONTO 				: IN 		STD_LOGIC 								:='0';						--Setar para 1 quando a passagem os dados de atributos estiver pronto.
-		KNN_K								: IN  	STD_LOGIC_VECTOR(3 DOWNTO 0)		:= "0001";					--Configura o valor de K para o algoritimo.
+		KNN_DADOS_VALOR					: IN 		STD_LOGIC_VECTOR(15 DOWNTO 0) 	:= "0000000000000000";	--Valor do atributo a ser pasada para o KNN.
+		KNN_DADOS_ATRIBUTO_N				: IN 		STD_LOGIC_VECTOR(7 DOWNTO 0) 		:= "00000000";				--Numero do atributo (0 a 255);
+		KNN_DADOS_PRONTO 					: IN 		STD_LOGIC 								:='0';						--Setar para 1 quando a passagem os dados de atributos estiver pronto.
+		KNN_K									: IN  	STD_LOGIC_VECTOR(3 DOWNTO 0)		:= "0001";					--Configura o valor de K para o algoritimo.
 		
-		KNN_CLASSE_PREVISTA			: OUT 	STD_LOGIC_VECTOR(15 DOWNTO 0);									--Classe de objeto que o KNN previu.
-		KNN_CLASSE_PREVISTA_PRONTO	: OUT 	STD_LOGIC := '0';														--Dados prontos para serem lidos.
+		KNN_CLASSE_PREVISTA				: OUT 	STD_LOGIC_VECTOR(15 DOWNTO 0);									--Classe de objeto que o KNN previu.
+		KNN_CLASSE_PREVISTA_DISTANCIA	: OUT 	STD_LOGIC_VECTOR(15 DOWNTO 0);									--Distancia calculada para a classe prevista.
+		KNN_CLASSE_PREVISTA_PRONTO		: OUT 	STD_LOGIC := '0';														--Dados prontos para serem lidos.
 		
-		KNN_TREINAMENTO				: IN 		STD_LOGIC := '0';														--Indica se o modulo KNN esta em modo de treinamento.
-		KNN_RESET						: IN		STD_LOGIC := '0';														--Reseta o modulo KNN para uma nova entrada de dados.
+		KNN_TREINAMENTO					: IN 		STD_LOGIC := '0';														--Indica se o modulo KNN esta em modo de treinamento.
+		KNN_RESET							: IN		STD_LOGIC := '0';														--Reseta o modulo KNN para uma nova entrada de dados.
 		
-		KNN_MAQUINA_ESTADO			: OUT 	STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
-		KNN_DEBUG_SINAIS				: OUT    STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
-		KNN_DEBUG_KEY0					: IN		STD_LOGIC := '0'
+		KNN_MAQUINA_ESTADO				: OUT 	STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
+		KNN_DEBUG_SINAIS					: OUT    STD_LOGIC_VECTOR(4 DOWNTO 0) := "00000";
+		KNN_DEBUG_KEY0						: IN		STD_LOGIC := '0'
 	);
 END ENTITY knn;
 
@@ -74,6 +75,7 @@ ARCHITECTURE knn_a of knn IS
 		record
 			classe		: integer;
 			total			: integer;
+			distancia	: integer;
 	end record;
 	
 	type distancia_euclidiana_AR_T is array (integer range <>) of distancia_euclidiana_R_T;
@@ -81,8 +83,8 @@ ARCHITECTURE knn_a of knn IS
 	
 	type estado_T is (CARGA, CALCULAR, ORDENAR, RANQUEAR, PRONTO);  
 
-	constant	NUMERO_DE_REGISTROS_TREINAMENTO	:integer := 17;	-- Iniciando em 0.
-	constant NUMERO_DE_ATRIBUTOS 					:integer := 7; 	-- Iniciando de 0, logo 8 atributos.
+	constant	NUMERO_DE_REGISTROS_TREINAMENTO	:integer := 5;			-- Iniciando em 0.
+	constant NUMERO_DE_ATRIBUTOS 					:integer := 5; 		-- Iniciando de 0, logo 6 atributos.
 	--constant MAX_KNN_K 								:integer := 16;	-- Maior valor possivel para K.
 	
 	--constant KNN_K : STD_LOGIC_VECTOR(4 downto 0) := "00001"; -- provisoriamente definido.
@@ -113,6 +115,7 @@ ARCHITECTURE knn_a of knn IS
 
 	
 	signal sng_knn_classe_prevista							: std_logic_vector (15 downto 0);
+	signal sng_knn_classe_prevista_distancia				: std_logic_vector (15 downto 0);
 	
 	signal sng_reset												: std_logic := '0';
 	
@@ -162,7 +165,7 @@ BEGIN
 						
 						kr_dados_treinamento(to_integer(unsigned(KNN_DADOS_ATRIBUTO_N))) := KNN_DADOS_VALOR;
 						
-						if (KNN_DADOS_ATRIBUTO_N = "00000111") then -- Ultimo atributo do registro guarda a classe e armazena os valores no registro.
+						if (KNN_DADOS_ATRIBUTO_N = std_logic_vector(to_unsigned(NUMERO_DE_ATRIBUTOS,KNN_DADOS_ATRIBUTO_N'length))) then -- Ultimo atributo do registro guarda a classe e armazena os valores no registro.
 							
 							krs_registros_treinamento(sng_int_total_registros) := kr_dados_treinamento;	
 							sng_int_total_registros <= sng_int_total_registros + 1;
@@ -173,7 +176,7 @@ BEGIN
 					
 						kr_dados_teste(to_integer(unsigned(KNN_DADOS_ATRIBUTO_N))) := KNN_DADOS_VALOR;
 						
-						if (KNN_DADOS_ATRIBUTO_N = "00000111") then -- Ultimo atributo do registro guarda a classe.
+						if (KNN_DADOS_ATRIBUTO_N = std_logic_vector(to_unsigned(NUMERO_DE_ATRIBUTOS, KNN_DADOS_ATRIBUTO_N'length))) then -- Ultimo atributo do registro guarda a classe.
 							
 							sng_knn_teste_pronto <= '1';
 						
@@ -411,6 +414,7 @@ BEGIN
 		variable	int_a 							: integer range 0 to NUMERO_DE_REGISTROS_TREINAMENTO;
 		variable v_k_proximos					: k_proximos_AR_T(0 to NUMERO_DE_REGISTROS_TREINAMENTO);
 		variable v_classe							: integer := 0;
+		variable v_classe_distancia			: integer := 0;	--Distancia media das classes encontradas.
 		variable int_b								: integer := 0;
 		variable bit_achou						: boolean := false;
 		variable int_k_proximos_posicao 		: integer := 0;
@@ -445,15 +449,17 @@ BEGIN
 				--LOOP PARA CONTAR O TOTAL DE CADA CLASSE E COLOCAR EM UM VETOR DE TOTAIS DE CLASSE.
 			LOOP_KNN: for int_a in 0 to (NUMERO_DE_REGISTROS_TREINAMENTO) loop
 					
-					bit_achou := false;
-					v_classe := to_integer(unsigned(vs_distancia_euclidiana_ordenada(int_a).classe));
-					--v_classe := to_integer(unsigned(sng_distancia_euclidiana_ordenada(int_a).classe));
+					bit_achou 				:= false;
+					v_classe 				:= to_integer(unsigned(vs_distancia_euclidiana_ordenada(int_a).classe));
+					v_classe_distancia	:= to_integer(unsigned(vs_distancia_euclidiana_ordenada(int_a).distancia));
 					
 					for int_b in 0 to (v_k_proximos'length - 1) loop
 						
 						if v_classe = v_k_proximos(int_b).classe then
 						
 							v_k_proximos(int_b).total := v_k_proximos(int_b).total + 1;
+							v_k_proximos(int_b).distancia := (v_k_proximos(int_b).distancia + v_classe_distancia) / v_k_proximos(int_b).total;
+							
 							bit_achou := true;
 							exit;
 							
@@ -465,6 +471,8 @@ BEGIN
 						
 						v_k_proximos(int_k_proximos_posicao).classe := v_classe;
 						v_k_proximos(int_k_proximos_posicao).total := 1;
+						v_k_proximos(int_k_proximos_posicao).distancia := v_classe_distancia;
+						
 						int_k_proximos_posicao := int_k_proximos_posicao + 1;
 						
 					end if;
@@ -483,7 +491,9 @@ BEGIN
 					if v_k_proximos(int_a).total > int_k_proximor_maior_total then
 						
 						int_k_proximor_maior_total := v_k_proximos(int_a).total;
+						
 						v_classe := v_k_proximos(int_a).classe;
+						v_classe_distancia := v_k_proximos(int_a).distancia;
 						
 					end if;
 					
@@ -498,8 +508,10 @@ BEGIN
 				
 				if (KNN_K = "0001" ) then
  					 sng_knn_classe_prevista <= std_logic_vector(vs_distancia_euclidiana_ordenada(0).classe);
+					 sng_knn_classe_prevista_distancia<= std_logic_vector(vs_distancia_euclidiana_ordenada(0).distancia);
 				else
 					sng_knn_classe_prevista <= std_logic_vector(to_unsigned(v_classe,sng_knn_classe_prevista'length));
+					sng_knn_classe_prevista_distancia <= std_logic_vector(to_unsigned(v_classe_distancia, sng_knn_classe_prevista_distancia'length));
 				end if;
 				
 				sng_knn_ranquear_pronto <= '1';
@@ -615,6 +627,8 @@ BEGIN
 	end process p_knn_maquina_de_estado;
 
 	KNN_CLASSE_PREVISTA <= sng_knn_classe_prevista;
+	KNN_CLASSE_PREVISTA_DISTANCIA <= sng_knn_classe_prevista_distancia;
+	
 	--KNN_CLASSE_PREVISTA_PRONTO <= sng_knn_feito when KNN_DEBUG_KEY0 = '1' else '1';	
 	KNN_CLASSE_PREVISTA_PRONTO <= sng_knn_feito;
 	
