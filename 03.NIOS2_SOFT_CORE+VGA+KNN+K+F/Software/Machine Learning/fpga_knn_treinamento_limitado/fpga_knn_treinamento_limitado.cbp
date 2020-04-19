@@ -15,7 +15,6 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-DDEBUG" />
-					<Add option="-DFPGA" />
 				</Compiler>
 			</Target>
 			<Target title="x86_Release">
