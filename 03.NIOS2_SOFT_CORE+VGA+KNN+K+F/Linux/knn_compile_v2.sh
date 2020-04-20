@@ -22,6 +22,7 @@ source ./nios2-environment.sh
 #cp -rvf ../Software/Machine\ Learning/nios2_knn_treinamento_teste_bertini_b/Build/NIOS2/bin/Debug/* ./buildroot-2019.02.3/output/target/root/knn
 
 cp -rvf ../Software/Machine\ Learning/fpga_knn_treinamento_limitado/Build/NIOS2/bin/Debug/* ./buildroot-2019.02.3/output/target/root/
+cp -rvf ../Software/Machine\ Learning/fpga_knn_treinamento_limitado/Build/NIOS2/bin/Release/* ./buildroot-2019.02.3/output/target/root/
 
 
 cd buildroot-2019.02.3/

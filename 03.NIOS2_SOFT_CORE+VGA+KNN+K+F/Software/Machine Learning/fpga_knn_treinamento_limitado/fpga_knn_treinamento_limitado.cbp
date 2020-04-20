@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="x86_Debug">
-				<Option output="Build/x86/bin/Debug/fpga_knn_hardware_limitado" prefix_auto="1" extension_auto="1" />
+				<Option output="Build/x86/bin/Debug/fpga_knn_hardware_limitado_debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="Build/x86/bin/Debug" />
 				<Option object_output="Build/x86/obj/Debug/" />
 				<Option type="1" />
@@ -18,7 +18,7 @@
 				</Compiler>
 			</Target>
 			<Target title="x86_Release">
-				<Option output="Build/x86/bin/Release/fpga_knn_treinamento_v2" prefix_auto="1" extension_auto="1" />
+				<Option output="Build/x86/bin/Release/fpga_knn_hardware_limitado" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="Build/x86/bin/Debug" />
 				<Option object_output="Build/x86/obj/Release/" />
 				<Option type="1" />
@@ -32,7 +32,7 @@
 				</Linker>
 			</Target>
 			<Target title="NIOS2_Debug">
-				<Option output="Build/NIOS2/bin/Debug/fpga_knn_treinamento_limitado" prefix_auto="1" extension_auto="1" />
+				<Option output="Build/NIOS2/bin/Debug/fpga_knn_treinamento_limitado_debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="Build/NIOS2/bin/Debug/" />
 				<Option object_output="Build/NIOS2/obj/Debug/" />
 				<Option type="1" />
@@ -44,12 +44,15 @@
 				</Compiler>
 			</Target>
 			<Target title="NIOS2_Release">
-				<Option output="Build/NIOS2/bin/Release/fpga_knn_treinamento_v2" prefix_auto="1" extension_auto="1" />
+				<Option output="Build/NIOS2/bin/Release/fpga_knn_treinamento_limitado" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="Build/NIOS2/bin/Debug/" />
 				<Option object_output="Build/NIOS2/obj/Release" />
 				<Option type="1" />
 				<Option compiler="intel_nios2_compiler" />
 				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-DFPGA" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>

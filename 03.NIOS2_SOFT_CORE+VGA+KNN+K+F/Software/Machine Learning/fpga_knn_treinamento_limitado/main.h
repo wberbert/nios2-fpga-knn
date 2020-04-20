@@ -24,11 +24,6 @@
 #define TOTAL_HARDWARE_TREINAMENTO      6   // TAMANHO DO REGISTRO DE TREINAMENTO DO HARDWARE.
 #define TOTAL_HARDWARE_ATRIBUTOS        6   // TOTAL DE ATRIBUTOS MAXIMOS PERMITIDOS NO HARDWARE.
 
-int             *p_int_atributo = 0;
-int             **pp_int_dados_teste = 0;
-int             **pp_int_dados_treinamento = 0;
-
-
 typedef struct {
     u_int16_t   po_knn_classe_prevista_classe;
     u_int16_t   po_knn_classe_prevista_distancia;
@@ -36,9 +31,32 @@ typedef struct {
     double      dbl_tempo_ms;
 } distancia_t;
 
-distancia_t *p_reg_distancia;
-distancia_t *p_reg_distancia_ordenada;
+
+typedef struct {
+    u_int16_t   classe;
+    int         total;
+} proximos_t;
+
+
+typedef struct {
+    int         int_classe_predita;
+    int         int_classe_real;
+    double      dlb_tempo_predicao_hardware;
+    double      dbl_tempo_predicao_software;
+} predicao_t;
+
+int             *p_int_atributo = 0;
+int             **pp_int_dados_teste = 0;
+int             **pp_int_dados_treinamento = 0;
+
+distancia_t     *p_reg_distancia;
+predicao_t      *p_reg_predicao;
+
+
+//distancia_t *p_reg_distancia_ordenada;
 
 int f_total_linhas_arquivo (char *);
 void f_carregar_arquivo_memoria (char *, int *);
 void f_selecionar_dados_treinamento(int );
+void f_ordenar_execucao_parcial(distancia_t *, int);
+void f_obter_k_proximos(int *, distancia_t *, int, int);
