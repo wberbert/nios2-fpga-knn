@@ -4,7 +4,9 @@ int main(int argc, char *argv[])
 {
     int     int_total_linhas_arquivo = 0;
     int     int_total_execucoes_parciais = 1;
-    int     m_int_k = 1;
+    int     mint_k_software = 1;
+    int     mint_k_hardware = 1;
+
     int     m_int_total_predicao_correta = 0;
 
     int     mint_classe;
@@ -34,16 +36,32 @@ int main(int argc, char *argv[])
     printf ("SOFTWARE DESENVOLVIDO PARA O MESTRADO DE SISTEMAS DE INFORMACAO\n");
     printf ("UNIVERSIDADE FEDERAL FLUMINENSE\n\n");
 
-    if (argc < 2) {
+    if (*argv[1] == '?') {
 
-        printf ("Usar fpga_hardware_limitado \"Total de execucoes parciais\" \"K proximos\"\n\n");
+        printf("NOME\n\n");
+        printf("fpga_hardwre_limitado - Aprendizado de maquina para FPGA, mestrado sistema de informaçes Universidade Federal Fluminense\n\n");
+        printf("Sintaxe\n\n");
+        printf("fpga_hardware_limitado \"Metodo\" \"Total de execucoes parciais\" \"K software\" \"K hardware\n\n");
+
+        printf("DESCRICAO\n\n");
+        printf("Metodo=[r|s]\n");
+        printf("\tMetodo de selecao do dados de treinamento\n\t\t r - randomico\n\t\t s - sequencial");
+
+        return (0);
+    }
+
+    if (argc < 4) {
+
+        printf ("Usar fpga_hardware_limitado \"Metodo\" \"Total de execucoes parciais\" \"K software\" \"K hardware\"\n\n");
         return(-1);
 
     }
 
     //Armazena o total de execucoes parciais que sera utilizado para as execucoes de classificacao do hardware
     int_total_execucoes_parciais = atoi(argv[1]);
-
+    //Armazena o valor de K
+    mint_k_software = atoi(argv[2]);
+    mint_k_hardware = atoi(argv[3]);
 
     //Armazena as distancias calculadas para depois ordenar e selecionar a classe mais provavel
     p_reg_distancia = (distancia_t *) malloc(sizeof(distancia_t) * int_total_execucoes_parciais);
@@ -56,10 +74,12 @@ int main(int argc, char *argv[])
 
 
     printf("COMPUTANDO PREDICAO DE CLASSES\n");
-    printf("Total de registros para classificacao %d\n", int_total_linhas_arquivo);
-    printf("Total de execucoes parciais %d\n", int_total_execucoes_parciais);
+    printf("Total de registros para classificacao \t%d\n", int_total_linhas_arquivo);
+    printf("Total de execucoes parciais \t\t%d\n", int_total_execucoes_parciais);
+    printf("Valor de K Software \t\t\t%d\n", mint_k_software);
+    printf("Valor de K hardware \t\t\t%d\n", mint_k_hardware);
 
-    printf("Calculando, aguarde ...\n\n");
+    printf("\n\nCalculando, aguarde ...\n\n");
 
     #ifdef DEBUG
     printf("DEBUG - REGISTROS CARREGADOS EM MEMORIA\n\n");
@@ -120,7 +140,7 @@ int main(int argc, char *argv[])
 
             }
 
-            *(volatile u_int16_t*)po_knn_k = m_int_k;                                       //temporariamente colocado como 1.
+            *(volatile u_int16_t*)po_knn_k = mint_k_hardware;                                //temporariamente colocado como 1.
 
             *(volatile bool*)po_knn_treinamento = 0;                                        //Indica que os dados inseridos serao para teste.
 
@@ -171,7 +191,7 @@ int main(int argc, char *argv[])
         gettimeofday(&start, NULL);
 
         f_ordenar_execucao_parcial(p_reg_distancia, int_total_execucoes_parciais);                  //Ordena lista gerada pelo hardware.
-        f_obter_k_proximos(&mint_classe, p_reg_distancia, int_total_execucoes_parciais, m_int_k);   //Obtem o K proximos da lista ordenada.
+        f_obter_k_proximos(&mint_classe, p_reg_distancia, int_total_execucoes_parciais, mint_k_software);   //Obtem o K proximos da lista ordenada.
 
         gettimeofday(&stop, NULL);
 
@@ -213,7 +233,7 @@ int main(int argc, char *argv[])
         if (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) m_int_total_predicao_correta++;
     }
 
-    printf("\n\nAcuracia %3.2f%%\tTempo de hardware final %5.7f segundos\t Tempo de software final %5.7f segundos\t Total hardware + software final %5.7f segundos", ((float) m_int_total_predicao_correta / (float) int_total_linhas_arquivo) * 100, m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final, (m_dbl_ms_tempo_hardware_final + m_dbl_ms_tempo_software_final));
+    printf("\n\nAcuracia %3.2f%%\tTempo de hardware final %5.7fs\t Tempo de software final %5.7fs\t Total hardware + software final %5.7fs", ((float) m_int_total_predicao_correta / (float) int_total_linhas_arquivo) * 100, m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final, (m_dbl_ms_tempo_hardware_final + m_dbl_ms_tempo_software_final));
 
     free(p_reg_distancia);
     free(p_reg_predicao);
@@ -358,12 +378,18 @@ void f_obter_k_proximos(int *pint_classe, distancia_t *p_reg, int int_total_exec
 
     p = (proximos_t *) malloc (sizeof(proximos_t) * int_total_execucoes_parciais);
 
+    for (int l=0; l < int_total_execucoes_parciais; l++){
+        p[l].classe = 0;
+        p[l].total  = 0;
+    }
+
     for (int a=0; a < int_k; a++) {
 
         bln_achou = 0;
         int_classe = p_reg[a].po_knn_classe_prevista_classe;
 
         for (int b=0; b < int_total_execucoes_parciais; b++) {
+           //printf("Classe %d\t classe %d\n", int_classe, p[b].classe);
 
             if (int_classe == p[b].classe) {
 
@@ -393,7 +419,7 @@ void f_obter_k_proximos(int *pint_classe, distancia_t *p_reg, int int_total_exec
         }
 
     }
-    printf("DEBUG - CLASSE %d", int_classe);
+    //printf("DEBUG - CLASSE %d", int_classe);
     *pint_classe = int_classe;
 
     free(p);
