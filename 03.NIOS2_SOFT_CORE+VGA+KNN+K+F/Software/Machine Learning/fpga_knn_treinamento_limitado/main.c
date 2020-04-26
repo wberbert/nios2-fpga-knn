@@ -2,10 +2,11 @@
 
 int main(int argc, char *argv[])
 {
-    int     int_total_linhas_arquivo = 0;
-    int     int_total_execucoes_parciais = 1;
-    int     mint_k_software = 1;
-    int     mint_k_hardware = 1;
+    int     int_total_linhas_arquivo = 0;       //TOTAL DE LINHA NO ARQUIVO DE TESTE.
+    int     int_total_execucoes_parciais = 1;   //TOTAL DE EXECUCOES PARCIAIS PASSADAS VIA LINHA DE COMANDO.
+    int     mint_k_software = 1;                //K PARA O SOFTWARE PASSADAS VIA LINHA DE COMANDO.
+    int     mint_k_hardware = 1;                //K DO HARDWARE PASSADAS VIA LINHA DE COMANDO.
+    int     mint_algoritimoselecao;             //TIPO DE ALGORITMO DE SELECAO PASSADO VIA LINHA DE COMANDO
 
     int     m_int_total_predicao_correta = 0;
 
@@ -26,12 +27,11 @@ int main(int argc, char *argv[])
     //u_int16_t po_knn_classe_prevista_valor;
     u_int16_t po_knn_classe_prevista_pronto;
     //u_int16_t po_knn_classe_prevista_distancia;
+    #endif // FPGA
 
     struct  timeval start, stop;
     double  delta_ms, m_delta_ms_hardware_total, m_delta_ms_software_total;
     double  m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final;
-
-    #endif // FPGA
 
     printf ("SOFTWARE DESENVOLVIDO PARA O MESTRADO DE SISTEMAS DE INFORMACAO\n");
     printf ("UNIVERSIDADE FEDERAL FLUMINENSE\n\n");
@@ -39,29 +39,41 @@ int main(int argc, char *argv[])
     if (*argv[1] == '?') {
 
         printf("NOME\n\n");
-        printf("fpga_hardwre_limitado - Aprendizado de maquina para FPGA, mestrado sistema de informaçes Universidade Federal Fluminense\n\n");
+        printf("fpga_hardwre_limitado - Aprendizado de maquina para FPGA, mestrado sistema de informaçoes Universidade Federal Fluminense\n\n");
         printf("Sintaxe\n\n");
-        printf("fpga_hardware_limitado \"Metodo\" \"Total de execucoes parciais\" \"K software\" \"K hardware\n\n");
+        printf("fpga_hardware_limitado <Metodo> <Total de execucoes parciais> <K software> <K hardware>\n\n");
 
-        printf("DESCRICAO\n\n");
-        printf("Metodo=[r|s]\n");
-        printf("\tMetodo de selecao do dados de treinamento\n\t\t r - randomico\n\t\t s - sequencial");
+        printf("DESCRICAO\n");
+        printf("\nMetodo = [1|2|3]\n");
+        printf("\tMetodo de selecao do dados de treinamento\n\t\t 1 - randomico\n\t\t 2 - sequencial balanceado\n\t\t 3 - randomico exclusivo\n");
+        printf("\nTotal de execucoes parciais = N\n");
+        printf("\tTotal de execucoes parciais (N) para os dados de treinamento\n");
+        printf("\nK Software = K\n");
+        printf("\tValor de K para a parte do algoritmo que e executada em software\n");
+        printf("\nK hardware = K\n");
+        printf("\tValor de K para a parte do algoritmo que e executada em hardware\n");
 
+        printf("\n\n");
         return (0);
     }
 
-    if (argc < 4) {
+    if (argc < 5) {
 
         printf ("Usar fpga_hardware_limitado \"Metodo\" \"Total de execucoes parciais\" \"K software\" \"K hardware\"\n\n");
         return(-1);
 
     }
 
+
+    //INICIO - PARAMETROS VIA LINHA DE COMANDO
+    //Armazena o algoritmo de selecao de dados de treinamento
+    mint_algoritimoselecao = atoi(argv[1]);
     //Armazena o total de execucoes parciais que sera utilizado para as execucoes de classificacao do hardware
-    int_total_execucoes_parciais = atoi(argv[1]);
+    int_total_execucoes_parciais = atoi(argv[2]);
     //Armazena o valor de K
-    mint_k_software = atoi(argv[2]);
-    mint_k_hardware = atoi(argv[3]);
+    mint_k_software = atoi(argv[3]);
+    mint_k_hardware = atoi(argv[4]);
+    // FIM - PARAMETROS VIA LINHA DE COMANDO
 
     //Armazena as distancias calculadas para depois ordenar e selecionar a classe mais provavel
     p_reg_distancia = (distancia_t *) malloc(sizeof(distancia_t) * int_total_execucoes_parciais);
@@ -85,7 +97,7 @@ int main(int argc, char *argv[])
     printf("DEBUG - REGISTROS CARREGADOS EM MEMORIA\n\n");
     for (int int_registro=0; int_registro<150; int_registro++) {
 
-        printf ("%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_teste[int_registro][0], pp_int_dados_teste[int_registro][1], pp_int_dados_teste[int_registro][2], pp_int_dados_teste[int_registro][3], pp_int_dados_teste[int_registro][4], pp_int_dados_teste[int_registro][5]);
+        printf ("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_teste[int_registro][0], pp_int_dados_teste[int_registro][1], pp_int_dados_teste[int_registro][2], pp_int_dados_teste[int_registro][3], pp_int_dados_teste[int_registro][4], pp_int_dados_teste[int_registro][5], pp_int_dados_teste[int_registro][6]);
     }
     //printf ("%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_teste[0][0], pp_int_dados_teste[0][1], pp_int_dados_teste[0][2], pp_int_dados_teste[0][3], pp_int_dados_teste[0][4], pp_int_dados_teste[0][5]);
     //printf ("%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_teste[1][0], pp_int_dados_teste[1][1], pp_int_dados_teste[1][2], pp_int_dados_teste[1][3], pp_int_dados_teste[1][4], pp_int_dados_teste[1][5]);
@@ -110,15 +122,18 @@ int main(int argc, char *argv[])
     printf("\nTREINAMENTO DO HARDWARE\n\n");
     #endif // DEBBUG
 
+    #ifdef FPGA
     for (int l=0; l < int_total_linhas_arquivo; l++) {
 
         m_delta_ms_hardware_total = 0;
         m_delta_ms_software_total = 0;
+    #endif // FPGA
 
         for (int i=0; i < int_total_execucoes_parciais; i++) {
 
-            pp_int_dados_treinamento = (int **) malloc (sizeof(*p_int_atributo) * TOTAL_HARDWARE_TREINAMENTO);  //ALOCA MEMORIA PARA O NUMERO DE LINHAS DO AQUIVO.
-            f_selecionar_dados_treinamento(int_total_linhas_arquivo);
+            pp_int_dados_treinamento = (int **) malloc (sizeof(*p_int_atributo) * TOTAL_HARDWARE_TREINAMENTO);  //ALOCA MEMORIA PARA O NUMERO DE LINHAS DE TREINAMENTO.
+            f_selecionar_dados_treinamento(mint_algoritimoselecao, int_total_linhas_arquivo);
+
 
             #ifdef FPGA
 
@@ -140,7 +155,7 @@ int main(int argc, char *argv[])
 
             }
 
-            *(volatile u_int16_t*)po_knn_k = mint_k_hardware;                                //temporariamente colocado como 1.
+            *(volatile u_int16_t*)po_knn_k = mint_k_hardware;                               //K para o hardware FPGA.
 
             *(volatile bool*)po_knn_treinamento = 0;                                        //Indica que os dados inseridos serao para teste.
 
@@ -182,6 +197,15 @@ int main(int argc, char *argv[])
             free(pp_int_dados_treinamento);
         }
 
+        #ifdef DEBUG
+        printf("DEBUG - REGISTROS CARREGADOS EM MEMORIA - APOS SELECAO DE DADOS DE TREINAMENTO\n\n");
+        for (int int_registro=0; int_registro<150; int_registro++) {
+
+            printf ("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_teste[int_registro][0], pp_int_dados_teste[int_registro][1], pp_int_dados_teste[int_registro][2], pp_int_dados_teste[int_registro][3], pp_int_dados_teste[int_registro][4], pp_int_dados_teste[int_registro][5], pp_int_dados_teste[int_registro][6]);
+        }
+        #endif // DEBUG
+
+
         #ifdef FPGA
 
         #ifdef DEBUG
@@ -210,16 +234,27 @@ int main(int argc, char *argv[])
         }
         #endif // DEBUG
 
-        #endif // FPGA
-
-
         p_reg_predicao[l].int_classe_predita            = mint_classe;
         p_reg_predicao[l].int_classe_real               = pp_int_dados_teste[l][5];
         p_reg_predicao[l].dlb_tempo_predicao_hardware   = m_delta_ms_hardware_total;
         p_reg_predicao[l].dbl_tempo_predicao_software   = m_delta_ms_software_total;
 
+        #endif // FPGA
 
+        #ifdef  FPGA
+        //zera a flag de selecao para o proximo registro.
+        for (int int_registro=0; int_registro<150; int_registro++) {
+
+            pp_int_dados_teste[int_registro][6] = 0;
+
+        }
+        #endif // FPGA
+
+    #ifdef FPGA
     }
+    #endif // FPGA
+
+    #ifdef FPGA
 
     m_dbl_ms_tempo_hardware_final = 0;
     m_dbl_ms_tempo_software_final = 0;
@@ -237,6 +272,10 @@ int main(int argc, char *argv[])
 
     free(p_reg_distancia);
     free(p_reg_predicao);
+
+    #endif // FPGA
+
+
     //free(p_reg_distancia_ordenada);
 
   // p_reg_distancia->classe =1;
@@ -291,7 +330,7 @@ void f_carregar_arquivo_memoria (char *str_arquivo, int *int_total_linhas_arquiv
 
         if (fscanf(pfile, "%d\t%d\t%d\t%d\t%d\t%d\t\n", &a1, &a2, &a3, &a4, &a5, &a6)==6) {
 
-            p_int_atributo = (int *) malloc(sizeof (int) * TOTAL_HARDWARE_ATRIBUTOS);   //ALOCA MEMORIA PARA UMA LINHA DO ARQUIVO.
+            p_int_atributo = (int *) malloc(sizeof (int) * TOTAL_HARDWARE_ATRIBUTOS + 1);   //ALOCA MEMORIA PARA UMA LINHA DO ARQUIVO.
 
             *(p_int_atributo + 0) = a1;
             *(p_int_atributo + 1) = a2;
@@ -299,6 +338,8 @@ void f_carregar_arquivo_memoria (char *str_arquivo, int *int_total_linhas_arquiv
             *(p_int_atributo + 3) = a4;
             *(p_int_atributo + 4) = a5;
             *(p_int_atributo + 5) = a6;
+            *(p_int_atributo + 6) = 0;
+
             pp_int_dados_teste[int_registro] = p_int_atributo;
 
             //printf("%d\n", int_registro);
@@ -315,9 +356,12 @@ void f_carregar_arquivo_memoria (char *str_arquivo, int *int_total_linhas_arquiv
 
 }
 
-void f_selecionar_dados_treinamento(int int_total_registros_treinamento) {
+void f_selecionar_dados_treinamento(algoritmoselecao_e enu_algoritmo, int int_total_registros_treinamento) {
+    int int_classe = 0;                 //Para o algoritimo sequencial
+    int int_registro_randomico = 0;     //Para o algoritmo randomico
 
     srand(rand() + time(0));
+
 
     #ifdef DEBUG
     printf("\nDEBUG - REGISTROS DE TREINAMENTO CARREGADOS EM MEMORIA\n\n");
@@ -325,7 +369,48 @@ void f_selecionar_dados_treinamento(int int_total_registros_treinamento) {
 
     for (int a=0; a < TOTAL_HARDWARE_TREINAMENTO; a++) {
 
-        pp_int_dados_treinamento[a] = pp_int_dados_teste[rand() % int_total_registros_treinamento];
+        switch (enu_algoritmo) {
+            case RANDOMICO: //Algoritmo randomico
+
+                int_registro_randomico = rand() % int_total_registros_treinamento;
+                pp_int_dados_treinamento[a] = pp_int_dados_teste[int_registro_randomico];
+                pp_int_dados_teste[int_registro_randomico][6] = 1;
+                break;
+
+            case SEQUENCIALBALANCEADO:
+
+                for (int b=0; b < int_total_registros_treinamento; b++) {
+
+                    if ((pp_int_dados_teste[b][5] > int_classe) && (pp_int_dados_teste[b][6] !=1)){
+
+                        pp_int_dados_treinamento[a] = pp_int_dados_teste[b];
+                        pp_int_dados_teste[b][6] = 1;
+
+                        int_classe = pp_int_dados_teste[b][5];
+                        if ((int_classe % 3) == 0 ) {
+                            int_classe = 0;
+                        }
+                        break;
+
+                    }
+
+                }
+                break;
+
+            case RANDOMICOEXCLUSIVO: //algoritmo randomico exclusivo
+
+                do {
+
+                    int_registro_randomico = rand() % int_total_registros_treinamento;
+
+                } while (pp_int_dados_teste[int_registro_randomico][6] == 1);
+
+                pp_int_dados_treinamento[a] = pp_int_dados_teste[int_registro_randomico];
+                pp_int_dados_teste[int_registro_randomico][6] = 1;
+                break;
+
+        }
+
         #ifdef DEBUG
         printf ("%d\t%d\t%d\t%d\t%d\t%d\n", pp_int_dados_treinamento[a][0], pp_int_dados_treinamento[a][1], pp_int_dados_treinamento[a][2], pp_int_dados_treinamento[a][3], pp_int_dados_treinamento[a][4], pp_int_dados_treinamento[a][5]);
         #endif // DEBUG

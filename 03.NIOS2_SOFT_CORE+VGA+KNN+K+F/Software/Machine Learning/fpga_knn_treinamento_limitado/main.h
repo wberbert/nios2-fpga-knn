@@ -23,6 +23,11 @@
 
 #define TOTAL_HARDWARE_TREINAMENTO      6   // TAMANHO DO REGISTRO DE TREINAMENTO DO HARDWARE.
 #define TOTAL_HARDWARE_ATRIBUTOS        6   // TOTAL DE ATRIBUTOS MAXIMOS PERMITIDOS NO HARDWARE.
+typedef enum {
+    RANDOMICO               = 1,
+    SEQUENCIALBALANCEADO    = 2,
+    RANDOMICOEXCLUSIVO      = 3
+} algoritmoselecao_e ;
 
 typedef struct {
     u_int16_t   po_knn_classe_prevista_classe;
@@ -57,6 +62,6 @@ predicao_t      *p_reg_predicao;
 
 int f_total_linhas_arquivo (char *);
 void f_carregar_arquivo_memoria (char *, int *);
-void f_selecionar_dados_treinamento(int );
+void f_selecionar_dados_treinamento(algoritmoselecao_e, int );
 void f_ordenar_execucao_parcial(distancia_t *, int);
 void f_obter_k_proximos(int *, distancia_t *, int, int);
