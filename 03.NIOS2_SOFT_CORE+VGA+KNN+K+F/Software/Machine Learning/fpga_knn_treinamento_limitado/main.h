@@ -48,6 +48,7 @@ typedef struct {
     int         int_classe_real;
     double      dlb_tempo_predicao_hardware;
     double      dbl_tempo_predicao_software;
+    int         int_registrotreinamento;        //Na predicao este registro estava nos dados de treinamento.?? Se sim o correto e expurga-lo das estatiticas.
 } predicao_t;
 
 int             *p_int_atributo = 0;
@@ -62,6 +63,6 @@ predicao_t      *p_reg_predicao;
 
 int f_total_linhas_arquivo (char *);
 void f_carregar_arquivo_memoria (char *, int *);
-void f_selecionar_dados_treinamento(algoritmoselecao_e, int );
+void f_selecionar_dados_treinamento(algoritmoselecao_e, int , int );
 void f_ordenar_execucao_parcial(distancia_t *, int);
 void f_obter_k_proximos(int *, distancia_t *, int, int);
