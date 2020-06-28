@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 
     FILE    *file;
 
-    char    *chr_knn_k;
+    //char    *chr_knn_k;
+    int     mint_k = 1;
 
     u_int16_t po_knn_classe_prevista_valor;
     u_int16_t po_knn_classe_prevista_pronto;
@@ -48,18 +49,19 @@ int main(int argc, char *argv[])
 
 
     if (argc == 1) {
-        printf ("Usar %s \"nome do arquivo de teste\" \"valor de K\" <debug>", argv[0]);
+        printf ("\nUsar %s \"nome do arquivo de teste\" \"valor de K\" <debug>\n", argv[0]);
         //printf("Informe o nome do arquivo de treinamento.\n");
         return(-1);
     }
 
     if (argc == 2) {
-        printf ("Usar %s \"nome do arquivo de teste\" \"valor de K\" <debug>", argv[0]);
+        printf ("\nUsar %s \"nome do arquivo de teste\" \"valor de K\" <debug>\n", argv[0]);
         //printf("Informe o valor de K.\n");
         return(-1);
     }
 
-    if (argc!=1)chr_knn_k = argv[2];
+    //if (argc!=1)chr_knn_k = argv[2];
+    if (argc!=1)mint_k = atoi(argv[2]);
 
     file = fopen(argv[1], "r");
 
@@ -70,7 +72,7 @@ int main(int argc, char *argv[])
 
     g_delta_ms_total = 0;
 
-    printf ("FPGA KNN TESTE COMPILACAO 1 PARA O PROJETO 02.NIOS2_SOFT_CORE+VGA+KNN+K.\n");
+    printf ("FPGA KNN TESTE COMPILACAO 2 PARA O PROJETO 02.NIOS2_SOFT_CORE+VGA+KNN+K.\n");
     printf ("TESTE DA CLASSE KNN FPGA ...\n");
 
     //*(volatile bool*)po_knn_reset = 0;
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
     if (argc == 1) {
         *(volatile u_int16_t*)po_knn_k = 1;
     } else {
-        *(volatile u_int16_t*)po_knn_k = (int) *chr_knn_k;
+        *(volatile u_int16_t*)po_knn_k = (u_int16_t) mint_k;
     }
 
     while(fscanf(file, "%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n", &iV1, &iV2, &iV3, &iV4, &iV5, &iV6, &iV7, &iClasse)==8) {
@@ -166,7 +168,7 @@ int main(int argc, char *argv[])
 
     }
 
-    printf ("\n\nTotal Acertos %d Total Registros %d\t k=%c\n", int_total_registros_corretos, int_total_registros, *chr_knn_k);
+    printf ("\n\nTotal Acertos %d Total Registros %d\t k=%d\n", int_total_registros_corretos, int_total_registros, mint_k);
     printf ("\n\nTotal Score %.2f%%\n", ((float)int_total_registros_corretos/ (float)int_total_registros) * 100);
     printf ("Tempo Total %5.7f segundo(s) \n", (float)g_delta_ms_total);
 

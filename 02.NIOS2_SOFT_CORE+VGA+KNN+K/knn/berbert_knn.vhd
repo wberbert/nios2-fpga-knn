@@ -11,7 +11,7 @@ ENTITY knn is
 		KNN_DADOS_VALOR				: IN 		STD_LOGIC_VECTOR(15 DOWNTO 0) 	:= "0000000000000000";	--Valor do atributo a ser pasada para o KNN.
 		KNN_DADOS_ATRIBUTO_N			: IN 		STD_LOGIC_VECTOR(7 DOWNTO 0) 		:= "00000000";				--Numero do atributo (0 a 255);
 		KNN_DADOS_PRONTO 				: IN 		STD_LOGIC 								:='0';						--Setar para 1 quando a passagem os dados de atributos estiver pronto.
-		KNN_K								: IN  	STD_LOGIC_VECTOR(3 DOWNTO 0)		:= "0001";					--Configura o valor de K para o algoritimo.
+		KNN_K								: IN  	STD_LOGIC_VECTOR(4 DOWNTO 0)		:= "00001";					--Configura o valor de K para o algoritimo.
 		
 		KNN_CLASSE_PREVISTA			: OUT 	STD_LOGIC_VECTOR(15 DOWNTO 0);									--Classe de objeto que o KNN previu.
 		KNN_CLASSE_PREVISTA_PRONTO	: OUT 	STD_LOGIC := '0';														--Dados prontos para serem lidos.
@@ -440,6 +440,8 @@ BEGIN
 
 			if (sng_knn_ranquear'event and sng_knn_ranquear = '1') then
 				
+				int_k_proximos_posicao :=0;
+				v_classe :=0;
 				--sng_knn_classe_prevista <= std_logic_vector(sng_distancia_euclidiana_ordenada(0).classe);
 				
 				--LOOP PARA CONTAR O TOTAL DE CADA CLASSE E COLOCAR EM UM VETOR DE TOTAIS DE CLASSE.
@@ -477,6 +479,8 @@ BEGIN
 					
 			end loop LOOP_KNN;
 				
+				int_k_proximor_maior_total:=0;
+				
 				--LOOP PARA DEFINIR QUAL CLASSE POSSUI MAIOR CONTAGEM.
 				for int_a in 0 to (v_k_proximos'length - 1) loop
 					
@@ -496,7 +500,7 @@ BEGIN
 --					end if;
 				end loop;
 				
-				if (KNN_K = "0001" ) then
+				if (KNN_K = "00001" ) then
  					 sng_knn_classe_prevista <= std_logic_vector(vs_distancia_euclidiana_ordenada(0).classe);
 				else
 					sng_knn_classe_prevista <= std_logic_vector(to_unsigned(v_classe,sng_knn_classe_prevista'length));

@@ -10,7 +10,7 @@ module nios2_sopc (
 		output wire [7:0]  knn_dados_atributo_out_export,        //        knn_dados_atributo_out.export
 		output wire        knn_dados_pronto_out_export,          //          knn_dados_pronto_out.export
 		output wire [15:0] knn_dados_valor_out_export,           //           knn_dados_valor_out.export
-		output wire [3:0]  knn_k_export,                         //                         knn_k.export
+		output wire [4:0]  knn_k_export,                         //                         knn_k.export
 		output wire        knn_reset_out_export,                 //                 knn_reset_out.export
 		output wire        knn_treinamento_out_export,           //           knn_treinamento_out.export
 		output wire [7:0]  pio_0_external_connection_export,     //     pio_0_external_connection.export

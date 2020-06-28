@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     int     m_int_total_predicao_correta = 0;
 
     int     mint_classe;
+    int     mint_total_registros_avaliados = 0;
 
     //void *po_knn_classe_prevista_p;
     #ifdef  FPGA
@@ -32,11 +33,12 @@ int main(int argc, char *argv[])
     #endif // FPGA
 
     struct  timeval start, stop;
-    double  delta_ms, m_delta_ms_hardware_total, m_delta_ms_software_total;
-    double  m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final;
+    double  delta_ms, m_delta_ms_hardware_total, m_delta_ms_software_total, m_delta_ms_IO_total;
+    double  m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final, m_dbl_ms_tempo_IO_final;
 
     printf ("SOFTWARE DESENVOLVIDO PARA O MESTRADO DE SISTEMAS DE INFORMACAO\n");
-    printf ("UNIVERSIDADE FEDERAL FLUMINENSE\n\n");
+    printf ("UNIVERSIDADE FEDERAL FLUMINENSE\n");
+    printf ("VERSAO 3\n\n");
 
 
     if (argc == 1) {
@@ -116,6 +118,7 @@ int main(int argc, char *argv[])
     printf("Substituicao Parcial Dados de Treinamento \t%s\n", mbln_substituicaoparcialdadostreinamento ? "True":"False");
     printf("Excluir Estatistica de Dados de Treinamento \t%s\n", mbln_excluirregistrosemtreinamento ? "True":"False");
 
+    printf("\n\nOs tempos apresentados estao em segundos\n\n");
     printf("\n\nCalculando, aguarde ...\n\n");
 
     #ifdef DEBUG
@@ -152,11 +155,13 @@ int main(int argc, char *argv[])
 
         m_delta_ms_hardware_total = 0;
         m_delta_ms_software_total = 0;
+        m_delta_ms_IO_total = 0;
     #endif // FPGA
 
         for (int i=0; i < int_total_execucoes_parciais; i++) {
 
             #ifdef FPGA
+            gettimeofday(&start, NULL);
             if ((mbln_substituicaoparcialdadostreinamento == 0) || (i == 0)) {
 
                 pp_int_dados_treinamento = (int **) malloc (sizeof(*p_int_atributo) * TOTAL_HARDWARE_TREINAMENTO);  //ALOCA MEMORIA PARA O NUMERO DE LINHAS DE TREINAMENTO.
@@ -210,6 +215,10 @@ int main(int argc, char *argv[])
                 *(volatile bool*)po_knn_dados_pronto_p = 1;
 
             }
+            gettimeofday(&stop, NULL);
+            delta_ms = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
+
+            m_delta_ms_IO_total = m_delta_ms_IO_total + delta_ms;
 
             gettimeofday(&start, NULL);
             do {
@@ -280,6 +289,7 @@ int main(int argc, char *argv[])
         p_reg_predicao[l].int_classe_real               = pp_int_dados_teste[l][5];
         p_reg_predicao[l].dlb_tempo_predicao_hardware   = m_delta_ms_hardware_total;
         p_reg_predicao[l].dbl_tempo_predicao_software   = m_delta_ms_software_total;
+        p_reg_predicao[l].dbl_tempo_predicao_IO         = m_delta_ms_IO_total;
         p_reg_predicao[l].int_registrotreinamento       = pp_int_dados_teste[l][6]; // O registro foi utilizado como dados de treinamento. Se sim o certo e exclui-lo das estatisticas.
         #endif // FPGA
 
@@ -302,6 +312,7 @@ int main(int argc, char *argv[])
     m_dbl_ms_tempo_hardware_final = 0;
     m_dbl_ms_tempo_software_final = 0;
     m_int_total_predicao_correta = 0;
+    mint_total_registros_avaliados = 0;
 
     for (int l=0; l < int_total_linhas_arquivo; l++) {
 
@@ -309,25 +320,29 @@ int main(int argc, char *argv[])
 
             if (p_reg_predicao[l].int_registrotreinamento==0) {
 
-                printf ("\nClasse prevista %d\t Classe real %d\t Tempo hardware %5.7f Segundos\t Tempo software %5.7f Segundos\t Tempo total %5.7f Segundos\t %d\t %d ", p_reg_predicao[l].int_classe_predita, p_reg_predicao[l].int_classe_real, p_reg_predicao[l].dlb_tempo_predicao_hardware, p_reg_predicao[l].dbl_tempo_predicao_software, (p_reg_predicao[l].dlb_tempo_predicao_hardware + p_reg_predicao[l].dbl_tempo_predicao_software),  p_reg_predicao[l].int_registrotreinamento, (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) ? 1: 0);
+                printf ("\nClasse prevista %d\t Classe real %d\t Tempo hardware %5.7f\t software %5.7f\t IO %5.7f\t total %5.7f\t %d\t %d ", p_reg_predicao[l].int_classe_predita, p_reg_predicao[l].int_classe_real, p_reg_predicao[l].dlb_tempo_predicao_hardware, p_reg_predicao[l].dbl_tempo_predicao_software, p_reg_predicao[l].dbl_tempo_predicao_IO, (p_reg_predicao[l].dlb_tempo_predicao_hardware + p_reg_predicao[l].dbl_tempo_predicao_software + p_reg_predicao[l].dbl_tempo_predicao_IO),  p_reg_predicao[l].int_registrotreinamento, (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) ? 1: 0);
                 m_dbl_ms_tempo_hardware_final = m_dbl_ms_tempo_hardware_final + p_reg_predicao[l].dlb_tempo_predicao_hardware;
                 m_dbl_ms_tempo_software_final = m_dbl_ms_tempo_software_final + p_reg_predicao[l].dbl_tempo_predicao_software;
-                if (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) m_int_total_predicao_correta++;
+                m_dbl_ms_tempo_IO_final = m_dbl_ms_tempo_IO_final + p_reg_predicao[l].dbl_tempo_predicao_IO;
 
+                if (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) m_int_total_predicao_correta++;
+                mint_total_registros_avaliados++;
             }
 
         } else {
 
-            printf ("\nClasse prevista %d\t Classe real %d\t Tempo hardware %5.7f Segundos\t Tempo software %5.7f Segundos\t Tempo total %5.7f Segundos\t %d\t %d ", p_reg_predicao[l].int_classe_predita, p_reg_predicao[l].int_classe_real, p_reg_predicao[l].dlb_tempo_predicao_hardware, p_reg_predicao[l].dbl_tempo_predicao_software, (p_reg_predicao[l].dlb_tempo_predicao_hardware + p_reg_predicao[l].dbl_tempo_predicao_software),  p_reg_predicao[l].int_registrotreinamento, (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) ? 1: 0);
+            printf ("\nClasse prevista %d\t Classe real %d\t Tempo hardware %5.7f\t software %5.7f\t IO %5.7f\t total %5.7f\t %d\t %d ", p_reg_predicao[l].int_classe_predita, p_reg_predicao[l].int_classe_real, p_reg_predicao[l].dlb_tempo_predicao_hardware, p_reg_predicao[l].dbl_tempo_predicao_software, p_reg_predicao[l].dbl_tempo_predicao_IO, (p_reg_predicao[l].dlb_tempo_predicao_hardware + p_reg_predicao[l].dbl_tempo_predicao_software + p_reg_predicao[l].dbl_tempo_predicao_IO),  p_reg_predicao[l].int_registrotreinamento, (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) ? 1: 0);
             m_dbl_ms_tempo_hardware_final = m_dbl_ms_tempo_hardware_final + p_reg_predicao[l].dlb_tempo_predicao_hardware;
             m_dbl_ms_tempo_software_final = m_dbl_ms_tempo_software_final + p_reg_predicao[l].dbl_tempo_predicao_software;
-            if (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) m_int_total_predicao_correta++;
+            m_dbl_ms_tempo_IO_final = m_dbl_ms_tempo_IO_final + p_reg_predicao[l].dbl_tempo_predicao_IO;
 
+            if (p_reg_predicao[l].int_classe_predita == p_reg_predicao[l].int_classe_real) m_int_total_predicao_correta++;
+            mint_total_registros_avaliados++;
         }
 
     }
 
-    printf("\n\nAcuracia %3.2f%%\tTempo de hardware final %5.7fs\t Tempo de software final %5.7fs\t Total hardware + software final %5.7fs", ((float) m_int_total_predicao_correta / (float) int_total_linhas_arquivo) * 100, m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final, (m_dbl_ms_tempo_hardware_final + m_dbl_ms_tempo_software_final));
+    printf("\n\nAcuracia %3.2f%%\tTempo de hardware final %5.7f\t software final %5.7f\t Io Final %5.7f\t Total hardware + software + IO final %5.7f", ((float) m_int_total_predicao_correta / (float) mint_total_registros_avaliados) * 100, m_dbl_ms_tempo_hardware_final, m_dbl_ms_tempo_software_final, m_dbl_ms_tempo_IO_final,  (m_dbl_ms_tempo_hardware_final + m_dbl_ms_tempo_software_final + m_dbl_ms_tempo_IO_final));
 
     free(p_reg_distancia);
     free(p_reg_predicao);

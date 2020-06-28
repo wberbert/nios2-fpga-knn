@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1571096515 source:/home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/Quartus/NIOS2/Hardware/03.NIOS2_SOFT_CORE+VGA+KNN+K+F/Software/Machine Learning/fpga_knn_treinamento_limitado/source/mapmem.c
+	"../include/mapmem.h"
+
+1571096517 /home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/Quartus/NIOS2/Hardware/03.NIOS2_SOFT_CORE+VGA+KNN+K+F/Software/Machine Learning/fpga_knn_treinamento_limitado/include/mapmem.h
+	<sys/mman.h>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<assert.h>
+
+1587318058 source:/home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/Quartus/NIOS2/Hardware/03.NIOS2_SOFT_CORE+VGA+KNN+K+F/Software/Machine Learning/fpga_knn_treinamento_limitado/main.c
+	"main.h"
+
+1587317960 /home/wberbert/wberbert.id.uff.br/Documentos/Mestrado/Quartus/NIOS2/Hardware/03.NIOS2_SOFT_CORE+VGA+KNN+K+F/Software/Machine Learning/fpga_knn_treinamento_limitado/main.h
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<stdbool.h>
+	"include/mapmem.h"
+

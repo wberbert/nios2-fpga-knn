@@ -45,7 +45,7 @@ module nios2_sopc (
 	output	[7:0]	knn_dados_atributo_out_export;
 	output		knn_dados_pronto_out_export;
 	output	[15:0]	knn_dados_valor_out_export;
-	output	[3:0]	knn_k_export;
+	output	[4:0]	knn_k_export;
 	output		knn_reset_out_export;
 	output		knn_treinamento_out_export;
 	output	[7:0]	pio_0_external_connection_export;

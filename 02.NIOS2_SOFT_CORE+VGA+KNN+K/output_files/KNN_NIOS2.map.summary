@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Mon Dec  2 20:16:56 2019
+Analysis & Synthesis Status : Successful - Thu May  7 10:54:37 2020
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : KNN_NIOS2
 Top-level Entity Name : KNN_NIOS2
 Family : Cyclone IV E
-Total logic elements : 114,428
-    Total combinational functions : 110,298
-    Dedicated logic registers : 9,281
-Total registers : 9281
+Total logic elements : 108,929
+    Total combinational functions : 104,798
+    Dedicated logic registers : 9,230
+Total registers : 9230
 Total pins : 132
 Total virtual pins : 0
 Total memory bits : 155,968

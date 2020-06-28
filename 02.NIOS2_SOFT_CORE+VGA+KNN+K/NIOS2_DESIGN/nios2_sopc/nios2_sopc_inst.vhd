@@ -6,7 +6,7 @@
 			knn_dados_atributo_out_export        : out   std_logic_vector(7 downto 0);                     -- export
 			knn_dados_pronto_out_export          : out   std_logic;                                        -- export
 			knn_dados_valor_out_export           : out   std_logic_vector(15 downto 0);                    -- export
-			knn_k_export                         : out   std_logic_vector(3 downto 0);                     -- export
+			knn_k_export                         : out   std_logic_vector(4 downto 0);                     -- export
 			knn_reset_out_export                 : out   std_logic;                                        -- export
 			knn_treinamento_out_export           : out   std_logic;                                        -- export
 			pio_0_external_connection_export     : out   std_logic_vector(7 downto 0);                     -- export

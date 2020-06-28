@@ -48,6 +48,7 @@ typedef struct {
     int         int_classe_real;
     double      dlb_tempo_predicao_hardware;
     double      dbl_tempo_predicao_software;
+    double      dbl_tempo_predicao_IO;
     int         int_registrotreinamento;        //Na predicao este registro estava nos dados de treinamento.?? Se sim o correto e expurga-lo das estatiticas.
 } predicao_t;
 

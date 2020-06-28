@@ -96,8 +96,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 312)
 		(output)
-		(text "knn_k_export[3..0]" (rect 0 0 75 12)(font "Arial" (font_size 8)))
-		(text "knn_k_export[3..0]" (rect 4 301 112 312)(font "Arial" (font_size 8)))
+		(text "knn_k_export[4..0]" (rect 0 0 76 12)(font "Arial" (font_size 8)))
+		(text "knn_k_export[4..0]" (rect 4 301 112 312)(font "Arial" (font_size 8)))
 		(line (pt 0 312)(pt 208 312)(line_width 3))
 	)
 	(port
@@ -343,7 +343,7 @@ refer to the applicable agreement for further details.
 		(text "R" (rect 213 963 432 1936)(font "Arial" (color 0 0 0)))
 		(text "G" (rect 213 979 432 1968)(font "Arial" (color 0 0 0)))
 		(text "B" (rect 213 995 432 2000)(font "Arial" (color 0 0 0)))
-		(text " nios2_sopc " (rect 429 1016 930 2042)(font "Arial" ))
+		(text " system " (rect 445 1016 938 2042)(font "Arial" ))
 		(line (pt 208 32)(pt 272 32)(line_width 1))
 		(line (pt 272 32)(pt 272 1016)(line_width 1))
 		(line (pt 208 1016)(pt 272 1016)(line_width 1))
