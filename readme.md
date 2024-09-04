@@ -1,7 +1,3 @@
-Claro! Aqui está um README que informa sobre a existência das versões em português e em inglês e fornece links para os arquivos correspondentes:
-
----
-
 # KNN Machine Learning Project on FPGA with NIOS II
 
 This project implements a K-Nearest Neighbors (KNN) machine learning model using FPGA and the NIOS II processor. The goal is to demonstrate the capability of accelerating machine learning algorithms in hardware and integrating with the NIOS II processor for controlling and managing data processing.
@@ -75,7 +71,3 @@ Este repositório contém informações em dois idiomas para facilitar o acesso:
 - **[English Version](README.en.md)**: For users who prefer information in English.
 
 Feel free to choose the version that best suits your needs!
-
----
-
-Você pode ajustar os links se os arquivos estiverem localizados em um diretório diferente ou se os nomes dos arquivos mudarem. Se precisar de mais alguma coisa, é só avisar!
