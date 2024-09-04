@@ -67,7 +67,7 @@ For more information, contact Wanderson Berbert (wberbert@outlook.com).
 
 Este repositório contém informações em dois idiomas para facilitar o acesso:
 
-- **[Versão em Português](README.pt-br.md)**: Para usuários que preferem informações em português.
-- **[English Version](README.en.md)**: For users who prefer information in English.
+- **[Versão em Português](readme.pt-br.md)**: Para usuários que preferem informações em português.
+- **[English Version](readme.en.md)**: For users who prefer information in English.
 
 Feel free to choose the version that best suits your needs!
